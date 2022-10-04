@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    resources :members, only: [:index, :show, :edit, :update] do
+    resources :members, only: [:index] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
@@ -26,6 +26,11 @@ Rails.application.routes.draw do
     get 'homes/top'
     get '/homes/about' => 'homes#about', as: 'about'
   end
+  
+  get 'members/my_page' => 'public/members#show', as: 'my_page'
+  get 'members/information/edit' => 'public/members#edit', as: 'edit_information'
+  patch 'members/information' => 'public/members#update', as: 'information'
+  
   namespace :admin do
     resources :members, only: [:index, :show, :edit, :update, :destroy]
     resources :photos, only: [:index, :show, :destroy] do

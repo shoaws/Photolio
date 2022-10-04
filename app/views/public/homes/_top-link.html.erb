@@ -1,4 +1,18 @@
 <div class="row pt-5 pb-5 text-center top-link" style="width: 70%;">
+  <% if member_signed_in? %>
+  <div class="col-3">
+    <%= link_to "マイページ", my_page_path %>
+  </div>
+  <div class="col-3">
+    <%= link_to "写真館へ", photos_path %>
+  </div>
+  <div class="col-3">
+    <%= link_to "新規投稿", new_photo_path %>
+  </div>
+  <div class="col-3">
+    <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
+  </div>
+  <% else %>
   <div class="col-3">
     <%= link_to "About", about_path %>
   </div>
@@ -11,4 +25,5 @@
   <div class="col-3">
     <%= link_to "ログイン", new_member_session_path %>
   </div>
+  <% end %>
 </div>

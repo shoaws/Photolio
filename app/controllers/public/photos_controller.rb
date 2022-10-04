@@ -1,4 +1,7 @@
 class Public::PhotosController < ApplicationController
+  def new
+    
+  end
   def index
   end
 
