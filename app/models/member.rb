@@ -17,23 +17,23 @@ class Member < ApplicationRecord
   has_one_attached :profile_image
   has_one_attached :best_image
   
-  def get_profile_image(width, height)
+  def get_profile_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpeg')
-      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      image.attach(io: File.open(file_path), filename: 'default-image.jpeg', content_type: 'image/jpeg')
     end
-    profile_image.variant(resize_to_limit: [width, height]).processed
+    profile_image
   end
   
-  # フォローしたときの処理
+  # フォローの処理
   def follow(member_id)
     relationships.create(followed_id: member_id)
   end
-  # フォローを外すときの処理
+  # フォローを外す処理
   def unfollow(member_id)
     relationships.find_by(followed_id: member_id).destroy
   end
-  # フォローしているか判定
+  # フォローしているかどうか
   def following?(member)
     followings.include?(member)
   end
