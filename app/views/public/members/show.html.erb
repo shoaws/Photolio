@@ -40,14 +40,16 @@
 
       <h3>投稿一覧</h3>
 
-      <div class="row" style="height: 100%;">
+      <div class="row d-flex flex-wrap">
         <% @member.photos.each do |photo| %>
-          <div class="col-2">
-            <%= image_tag photo.image, size: "200x200" %>
-          </div>
+          <%= link_to photo_path(photo) do %>
+            <div class="p-1">
+              <%= image_tag photo.image, size: "160x160", style: "object-fit: cover;" %>
+            </div>
+          <% end %>
         <% end %>
       </div>
-      <div class="text-right">
+      <div style="position: fixed; bottom: 10%; right: 20%;">
         <%= link_to '写真展へ>', photos_path %>
       </div>
     </div>
