@@ -1,50 +1,19 @@
 <div class="container" style="height: 80vh;">
   <div class="row">
-    <div class="col-5">
-
-      <div class="my-3 d-flex justify-content-center align-items-center">
-        <%=image_tag @member.get_profile_image, size: "80x80", class: "member-icon" %>
-        <h4 class="ml-5"><%= @member.nickname %></h4>
-      </div>
-
-      <div class="mb-3" style="height: 100px;">
-        <%= @member.introduction %>
-      </div>
-
-      <table cellpadding="20" class="mx-auto mb-3 font-weight-bold">
-        <tr>
-          <td>展示数:<%= @member.photos.count %></td>
-          <td>フォロー:<%= @member.followings.count %></td>
-          <td>フォロワー:<%= @member.followers.count %></td>
-        </tr>
-      </table>
-
-      <div class="text-center my-5">
-        <%= link_to '編集', edit_member_path(@member), class: "px-5 btn btn-light" %>
-      </div>
-
-      <div>
-        <p class="mb-5">お気に入りの1枚</p>
-        <div class="text-center">
-          <% if @member.best_image.attached? %>
-            <%= image_tag @member.best_image, size: "300x200", class: "object-fit" %>
-          <% else %>
-            <p>撮影中…</p>
-          <% end %>
-        </div>
-      </div>
-
+    
+    <div class="col-4">
+      <%= render 'public/members/info', member: @member %>
     </div>
 
-    <div class="col-7">
+    <div class="col-8">
 
       <h3>投稿一覧</h3>
 
       <div class="row d-flex flex-wrap">
         <% @member.photos.each do |photo| %>
           <%= link_to photo_path(photo) do %>
-            <div class="p-1">
-              <%= image_tag photo.image, size: "160x160", style: "object-fit: cover;" %>
+            <div class="p-3">
+              <%= image_tag photo.image, size: "200x160", style: "object-fit: cover;" %>
             </div>
           <% end %>
         <% end %>

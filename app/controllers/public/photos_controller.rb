@@ -15,9 +15,12 @@ class Public::PhotosController < ApplicationController
   end
   
   def index
+    @photos = Photo.all
   end
 
   def show
+    @photo = Photo.find(params[:id])
+    @member = @photo.member
   end
   
   def destroy

@@ -1,2 +1,22 @@
-<h1>Public::Photos#show</h1>
-<p>Find me in app/views/public/photos/show.html.erb</p>
+<div class="container" style="height: 80vh;">
+  <div class="row">
+
+    <div class="col-4">
+      <%= render 'public/members/info', member: @member %>
+    </div>
+
+    <div class="col-8">
+
+      <h3>作品詳細</h3>
+
+      <div class="row">
+        <div class="mx-auto">
+          <%= image_tag @photo.image, size: "450x450", style: "object-fit: contain;" %>
+        </div>
+      </div>
+      <div style="position: fixed; bottom: 10%; right: 20%;">
+        <%= link_to '写真展へ>', photos_path %>
+      </div>
+    </div>
+  </div>
+</div>
