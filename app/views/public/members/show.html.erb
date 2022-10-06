@@ -13,7 +13,7 @@
         <% @member.photos.each do |photo| %>
           <%= link_to photo_path(photo) do %>
             <div class="p-3">
-              <%= image_tag photo.image, size: "200x160", style: "object-fit: cover;" %>
+              <%= image_tag photo.image, size: "200x200", style: "object-fit: cover;" %>
             </div>
           <% end %>
         <% end %>

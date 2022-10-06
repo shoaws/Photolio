@@ -1,2 +1,89 @@
-<h1>Public::Members#edit</h1>
-<p>Find me in app/views/public/members/edit.html.erb</p>
+<div class="container">
+
+  <h4><span class="py-2 px-4 bg-light">情報編集</span></h4>
+  <%= form_with model: @member do |f| %>
+    <div class="row mt-5 mx-auto justify-content-center" style="width: 70%;">
+      <%#= render "layouts/errors", obj: @member %>
+      <table class="table table-borderless table-sm">
+        <tr>
+          <td class="align-middle"><span>名前</span></td>
+          <td class="align-middle">(姓)</td>
+          <td><%= f.text_field :last_name, placeholder: "令和", class: "form-control" %></td>
+          <td class="align-middle">(名)</td>
+          <td class="align-middle"><%= f.text_field :first_name, placeholder: "道子", class: "form-control" %></td>
+        </tr>
+
+        <tr>
+          <td class="align-middle"><span>ニックネーム</span></td>
+          <td></td>
+          <td><%= f.text_field :nickname, placeholder: "レイワ", style: "border-radius: 8px;", class: "form-control" %></td>
+        </tr>
+
+        <tr>
+          <td class="align-middle"><span>メールアドレス</span></td>
+          <td></td>
+          <td><%= f.text_field :email, autocomplete: "email", placeholder: "sample@example.com", style: "border-radius: 8px;", class: "form-control" %></td>
+        </tr>
+
+        <tr>
+          <td class="align-middle"><span>Introduction</span></td>
+          <td></td>
+          <td colspan="3"><%= f.text_field :introduction, size: "55x20", style: "border-radius: 8px;", class: "form-control" %></td>
+        </tr>
+
+        <tr>
+          <td class="align-middle">電話番号(ハイフンなし)</td>
+          <td></td>
+          <td><%= f.text_field :phone_number, placeholder: "0000000000", style: "border-radius: 8px;", class: "form-control" %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="row justify-content-center align-items-center">
+      <div class="col-6">
+        <label class="col-4 mr-2">プロフィール画像</label>
+        <%= f.file_field :profile_image, accept: "image/*", onchange: "previewImage1(this);" %>
+      </div>
+      <div class="col-2 text-center">
+        <img id="preview-1" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="member-icon" style="width: 50px; height: 50px"></img>
+      </div>
+    </div>
+    <div class="row justify-content-center align-items-center" style="height: 100px;">
+      <div class="col-6">
+        <label class="col-4 mr-2">特別な1枚</label>
+        <%= f.file_field :best_image, accept: "image/*", onchange: "previewImage2(this);" %>
+      </div>
+      <div class="col-2 text-center">
+        <img id="preview-2" src="" style="max-width: 100px;"></img>
+      </div>
+    </div>
+    <div class="text-center my-3">
+      <%= f.submit "更新", class: "btn btn-success px-5" %>
+    </div>
+  <% end %>
+
+</div>
+
+<!-- メンバーアイコンプレビュー -->
+<script>
+function previewImage1(obj)
+{
+	var fileReader = new FileReader();
+	fileReader.onload = (function() {
+		document.getElementById('preview-1').src = fileReader.result;
+	});
+	fileReader.readAsDataURL(obj.files[0]);
+}
+</script>
+
+<!-- 特別な1枚プレビュー -->
+<script>
+function previewImage2(obj)
+{
+	var fileReader = new FileReader();
+	fileReader.onload = (function() {
+		document.getElementById('preview-2').src = fileReader.result;
+	});
+	fileReader.readAsDataURL(obj.files[0]);
+}
+</script>

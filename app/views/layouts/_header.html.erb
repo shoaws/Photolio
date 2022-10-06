@@ -1,12 +1,12 @@
 <header class="mb-4 bg-white shadow-sm">
   <div class="container">
     <div class="row text-center">
-      <% if member_signed_in? %>
-        <a class="col-5 text-decoration-none" href="/">Photolio</a>
-        <div class="col-7">
-          <nav class="navbar navbar-expand-lg navbar-primary">
-            <div class="collapse navbar-collapse">
-              <ul class="navbar-nav ml-auto">
+      <a class="col-5 text-decoration-none" href="/">Photolio</a>
+      <div class="col-7">
+        <nav class="navbar navbar-expand-lg navbar-primary">
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+              <% if member_signed_in? %>
                 <li class="nav-item align-top">
                   <%= link_to 'マイページ', member_path(current_member), class: 'mr-3 btn btn-outline-info' %>
                 </li>
@@ -19,17 +19,8 @@
                 <li class="nav-item">
                   <%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'btn btn-outline-info' %>
                 </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-      <% elsif admin_signed_in? %>
-        <a class="col-5 text-decoration-none" href="/"><h1>Photolio</h1></a>
-        <div class="col-7">
-          <nav class="navbar navbar-expand-lg navbar-primary">
-            <div class="collapse navbar-collapse">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+              <% elsif admin_signed_in? %>
+                <li class="nav-item align-top">
                   <%= link_to "商品一覧", admin_items_path, class: 'mr-3 btn btn-outline-info' %>
                 </li>
                 <li class="nav-item">
@@ -44,18 +35,21 @@
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-info' %>
                 </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-      <% else %>
-        <%= link_to root_path, class: "text-center" do %>
-        <h1>
-          Photolio</br>
-          自分写真館
-        </h1>
-        <% end %>
-      <% end %>
+              <% else %>
+                <li class="nav-item align-top">
+                  <%= link_to 'ゲストとしてログイン', photos_path, class: 'mr-3 btn btn-outline-info' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to '新規登録', new_member_registration_path, class: 'mr-3 btn btn-outline-info' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'ログイン', new_member_session_path, class: 'btn btn-outline-info' %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </nav>
+      </div>
     </div>
   </div>
 </header>

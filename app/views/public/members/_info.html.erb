@@ -16,14 +16,22 @@
 </table>
 
 <div class="text-center my-5">
-  <%= link_to '編集', edit_member_path(member), class: "px-5 btn btn-light" %>
+  <% if member == current_member %>
+    <%= link_to '編集', edit_member_path(member), class: "px-5 btn btn-light" %>
+  <% else %>
+    <% if current_member.following?(member) %>
+      <%= link_to "フォロー外す", member_relationships_path(member.id), method: :delete %>
+    <% else %>
+      <%= link_to "フォローする", member_relationships_path(member.id), method: :post %>
+    <% end %>
+  <% end %>
 </div>
 
 <div>
   <p class="mb-5">お気に入りの1枚</p>
   <div class="text-center">
     <% if member.best_image.attached? %>
-      <%= image_tag member.best_image, size: "300x200", class: "object-fit" %>
+      <%= image_tag member.best_image, size: "200x200", style: "object-fit: contain" %>
     <% else %>
       <p>撮影中…</p>
     <% end %>
