@@ -7,14 +7,26 @@
 
     <div class="col-8">
 
-      <h3>作品詳細</h3>
+      <h3 class="mt-3">作品詳細</h3>
 
-      <div class="row">
-        <div class="mx-auto">
+      <div>
+        <div class="mb-4 d-flex justify-content-center">
           <%= image_tag @photo.image, size: "450x450", style: "object-fit: contain;" %>
         </div>
+        <div class="mx-3 mb-2 bg-light" style="height: 40px;">
+          
+          <p class="p-2 text-center"><%= @photo.body %></p>
+        </div>
+        <div class="row text-center">
+          <div class="col-6">
+            <%= link_to 'Edit', edit_photo_path(@photo) %>
+          </div>
+          <div class="col-6">
+            <%= link_to 'destroy', photo_path(@photo), method: :delete %>
+          </div>
+        </div>
       </div>
-      <div style="position: fixed; bottom: 10%; right: 20%;">
+      <div class="mt-4 mr-5 text-right">
         <%= link_to '写真展へ>', photos_path %>
       </div>
     </div>

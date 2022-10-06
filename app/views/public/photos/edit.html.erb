@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h2>New Photo</h2>
+    <h2>Edit Photo</h2>
     <%= form_with model:@photo do |f| %>
       <%#= render 'layouts/errors', obj: @photo %>
       <div class="form-group">
@@ -9,7 +9,7 @@
         <%= f.file_field :image, accept: 'image/*', onchange: "previewImage(this);" %>
       </div>
       <div>
-        <img id="preview" src="" style="max-width: 200px;"></img>
+        <%= image_tag @photo.image, id: "preview", style: "max-width: 200px;" %>
       </div>
      <div class="form-group">
         <%= f.label :body %>
