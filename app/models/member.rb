@@ -25,6 +25,18 @@ class Member < ApplicationRecord
     profile_image
   end
 
+  #ゲストメンバー作成
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |member|
+      member.password = SecureRandom.urlsafe_base64
+      member.last_name = "guest"
+      member.first_name = "member"
+      member.nickname = "ゲストさん"
+      member.phone_number ="guestnumber"
+    end
+  end
+
+
   # フォローの処理
   def follow(member_id)
     relationships.create(followed_id: member_id)

@@ -6,9 +6,9 @@
 }
 
 .top-logo{
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255,255,255,0.9);
   position: absolute;
-  top: 30%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%,-50%);
 }
@@ -19,11 +19,13 @@
   top: 80%;
   left: 50%;
   transform: translate(-50%,-50%);
+  border-radius: 10px;
 }
 
 .member-icon{
   border-radius: 50%;
   object-fit: cover;
+  border: solid 2px black;
 }
 
 body{

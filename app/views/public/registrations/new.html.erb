@@ -54,16 +54,16 @@
     <div class="row justify-content-center align-items-center">
       <div class="col-6">
         <label class="col-4 mr-2">プロフィール画像</label>
-        <%= f.file_field :profile_image, accept: "image/*", onchange: "previewImage1(this);" %>
+        <%= f.file_field :profile_image, accept: "image/*", onchange: "previewProfile(this);" %>
       </div>
       <div class="col-2 text-center">
-        <img id="preview-1" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="member-icon" style="width: 50px; height: 50px"></img>
+        <img id="preview-1" src="/assets/no_image.jpeg" class="member-icon" style="width: 50px; height: 50px"></img>
       </div>
     </div>
     <div class="row justify-content-center align-items-center" style="height: 100px;">
       <div class="col-6">
         <label class="col-4 mr-2">特別な1枚</label>
-        <%= f.file_field :best_image, accept: "image/*", onchange: "previewImage2(this);" %>
+        <%= f.file_field :best_image, accept: "image/*", onchange: "previewBestphoto(this);" %>
       </div>
       <div class="col-2 text-center">
         <img id="preview-2" src="" style="max-width: 100px;"></img>
@@ -83,7 +83,7 @@
 </div>
 
 <script>
-function previewImage1(obj)
+function previewProfile(obj)
 {
 	var fileReader = new FileReader();
 	fileReader.onload = (function() {
@@ -94,7 +94,7 @@ function previewImage1(obj)
 </script>
 
 <script>
-function previewImage2(obj)
+function previewBestphoto(obj)
 {
 	var fileReader = new FileReader();
 	fileReader.onload = (function() {

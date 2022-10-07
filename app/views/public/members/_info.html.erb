@@ -10,8 +10,16 @@
 <table cellpadding="5" class="mx-auto mb-3 font-weight-bold">
   <tr>
     <td>展示数:<%= member.photos.count %></td>
-    <td>フォロー:<%= member.followings.count %></td>
-    <td>フォロワー:<%= member.followers.count %></td>
+    <td>
+      <%= link_to member_followings_path(member) do %>
+        フォロー:<%= member.followings.count %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to member_followers_path(member) do %>
+        フォロワー:<%= member.followers.count %>
+      <% end %>
+    </td>
   </tr>
 </table>
 
