@@ -38,15 +38,7 @@
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-info' %>
                 </li>
               <% else %>
-                <li class="nav-item align-top">
-                  <%= link_to 'ゲストとしてログイン', photos_path, class: 'mr-3 btn btn-outline-info' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to '新規登録', new_member_registration_path, class: 'mr-3 btn btn-outline-info' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to 'ログイン', new_member_session_path, class: 'btn btn-outline-info' %>
-                </li>
+                
               <% end %>
             </ul>
           </div>

@@ -10,28 +10,37 @@
 <table cellpadding="5" class="mx-auto mb-3 font-weight-bold">
   <tr>
     <td>展示数:<%= member.photos.count %></td>
-    <td>
-      <%= link_to member_followings_path(member) do %>
-        フォロー:<%= member.followings.count %>
-      <% end %>
-    </td>
-    <td>
-      <%= link_to member_followers_path(member) do %>
-        フォロワー:<%= member.followers.count %>
-      <% end %>
-    </td>
+    <% if member.email != "guest@example.com" %>
+      <td>
+        <%= link_to member_followings_path(member) do %>
+          フォロー:<%= member.followings.count %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to member_followers_path(member) do %>
+          フォロワー:<%= member.followers.count %>
+        <% end %>
+      </td>
+    <% end %>
   </tr>
 </table>
 
 <div class="text-center my-5">
-  <% if member == current_member %>
-    <%= link_to '編集', edit_member_path(member), class: "px-5 btn btn-light" %>
-  <% else %>
-    <% if current_member.following?(member) %>
-      <%= link_to "フォロー外す", member_relationships_path(member.id), method: :delete %>
+  <% if member.email != "guest@example.com" %>
+    <% if member == current_member %>
+      <%= link_to '編集', edit_member_path(member), class: "px-5 btn btn-light" %>
     <% else %>
-      <%= link_to "フォローする", member_relationships_path(member.id), method: :post %>
+      <% if current_member.following?(member) %>
+        <%= link_to "フォロー外す", member_relationships_path(member.id), method: :delete %>
+      <% else %>
+        <%= link_to "フォローする", member_relationships_path(member.id), method: :post %>
+      <% end %>
     <% end %>
+  <% else %>
+    <p>
+      メンバー登録をして</br>
+      他のメンバーと交流しましょう！
+    </p>
   <% end %>
 </div>
 

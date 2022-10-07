@@ -1,32 +1,31 @@
 <div class="row pt-5 pb-5 text-center align-items-center top-link" style="width: 70%;">
   <% if member_signed_in? %>
     <div class="col-3">
-      <%= link_to "マイページ", member_path(current_member) %>
+      <%= link_to "マイページ", member_path(current_member), class: "font-weight-bold btn btn-outline-secondary" %>
     </div>
     <div class="col-3">
-      <%= link_to "写真館へ", photos_path %>
+      <%= link_to "写真館へ", photos_path, class: "font-weight-bold btn btn-outline-secondary" %>
     </div>
     <div class="col-3">
-      <%= link_to "新規投稿", new_photo_path %>
+      <%= link_to "新規投稿", new_photo_path, class: "font-weight-bold btn btn-outline-secondary" %>
     </div>
     <div class="col-3">
-      <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
+      <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "font-weight-bold btn btn-outline-secondary" %>
     </div>
     <% else %>
     <div class="col-3">
-      <%= link_to "About", about_path %>
+      <%= link_to "About", about_path, class: "font-weight-bold btn btn-outline-secondary" %>
     </div>
     <div class="col-3">
-      <%= link_to members_guest_sign_in_path, method: :post do %>
-        写真館へ</br>
-        (ゲストとしてログイン)
+      <%= link_to members_guest_sign_in_path, method: :post, "data-confirm" => "ゲストメンバーとしてログインします", class: "font-weight-bold btn btn-outline-secondary" do %>
+        写真館へ
       <% end %>
     </div>
     <div class="col-3">
-      <%= link_to "新規登録", new_member_registration_path %>
+      <%= link_to "新規登録", new_member_registration_path, class: "font-weight-bold btn btn-outline-secondary" %>
     </div>
     <div class="col-3">
-      <%= link_to "ログイン", new_member_session_path %>
+      <%= link_to "ログイン", new_member_session_path, class: "font-weight-bold btn btn-outline-secondary" %>
     </div>
   <% end %>
 </div>
