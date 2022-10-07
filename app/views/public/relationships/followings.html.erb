@@ -1,2 +1,11 @@
-<h1>Public::Relationships#followings</h1>
-<p>Find me in app/views/public/relationships/followings.html.erb</p>
+<div class="container">
+  <h4 class=""><%= @members.count %>フォロー中</h4>
+  <div class="col-7 mx-auto">
+    <% if @members.count == 0 %>
+      <h6>他のユーザーをフォローしましょう！</h6>
+      <%= render 'index', members: @randam_members %>
+    <% else %>
+      <%= render 'index', members: @members %>
+    <% end %>
+  </div>
+</div>

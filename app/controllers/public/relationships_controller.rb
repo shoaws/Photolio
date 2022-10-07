@@ -13,6 +13,7 @@ class Public::RelationshipsController < ApplicationController
   def followings
     member = Member.find(params[:member_id])
     @members = member.followings
+    @randam_members = Member.where.not(nickname: "ゲストさん").order("RANDOM()").limit(5)
   end
 
   def followers
