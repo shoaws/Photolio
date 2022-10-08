@@ -1,4 +1,4 @@
 class PhotoComment < ApplicationRecord
   belongs_to :photo
-  belongs_to :mem
+  belongs_to :member
 end

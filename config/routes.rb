@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   devise_for :members,skip: [:passwords], controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions'
-  } 
-  
+  }
+
   devise_scope :member do
     post 'members/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
-  
+
 
   # 管理者用
   # URL /admin/sign_in ...
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
     resources :photos do
       resource :favorites, only: [:create, :index, :destroy]
-      resources :post_comments, only: [:create, :destroy]
+      resources :photo_comments, only: [:create, :destroy]
     end
     get 'homes/top'
     get '/homes/about' => 'homes#about', as: 'about'

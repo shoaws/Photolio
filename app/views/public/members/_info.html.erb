@@ -1,10 +1,16 @@
-<div class="my-5 d-flex justify-content-center align-items-center">
+<div class="my-3 d-flex justify-content-center align-items-center">
   <%= image_tag member.get_profile_image, size: "80x80", class: "member-icon" %>
   <h4 class="ml-5"><%= member.nickname %></h4>
 </div>
 
-<div class="mb-3" style="height: 100px;">
-  <%= member.introduction %>
+<div class="mb-3 d-flex align-items-center justify-content-center bg-light rounded" style="height: 80px;">
+  <% if member.introduction.blank? %>
+    <% if member == current_member %>
+  　  <p class="text-secondary">ステータスメッセージを入力しましょう</p>
+    <% end %>
+  <% else %>
+    <p><%= member.introduction %></p>
+  <% end %>
 </div>
 
 <table cellpadding="5" class="mx-auto mb-3 font-weight-bold">
@@ -28,7 +34,7 @@
 <div class="text-center my-5">
   <% if member.email != "guest@example.com" %>
     <% if member == current_member %>
-      <%= link_to '編集', edit_member_path(member), class: "px-5 btn btn-light" %>
+      <%= link_to '編集', edit_member_path(member), class: "px-5 btn btn-secondary" %>
     <% else %>
       <% if current_member.following?(member) %>
         <%= link_to "フォロー外す", member_relationships_path(member.id), method: :delete %>
@@ -45,12 +51,12 @@
 </div>
 
 <div>
-  <p class="mb-5">お気に入りの1枚</p>
+  <p class="mb-2"><span class="p-1 border border-dark rounded">お気に入りの1枚</span></p>
   <div class="text-center">
     <% if member.best_image.attached? %>
       <%= image_tag member.best_image, size: "200x200", style: "object-fit: contain" %>
     <% else %>
-      <p>撮影中…</p>
+      <p class="mt-5">撮影中…</p>
     <% end %>
   </div>
 </div>

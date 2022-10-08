@@ -1,0 +1,9 @@
+<% if photo.favorited_by?(current_member) %>
+    <%= link_to photo_favorites_path(photo), method: :delete, class: "text-dark text-decoration-none", remote: true do %>
+      <span class="text-danger lead">♥</span><%= photo.favorites.count %>
+    <% end %>
+<% else %>
+    <%= link_to photo_favorites_path(photo), method: :post, class: "text-dark text-decoration-none", remote: true do %>
+      <span class="lead">♡</span><%= photo.favorites.count %>
+    <% end %>
+<% end %>

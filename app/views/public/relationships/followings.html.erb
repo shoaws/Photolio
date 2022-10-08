@@ -3,7 +3,7 @@
   <div class="col-7 mx-auto">
     <% if @members.count == 0 %>
       <h6>他のユーザーをフォローしましょう！</h6>
-      <%= render 'index', members: @randam_members %>
+      <%= render 'index', members: @random_members %>
     <% else %>
       <%= render 'index', members: @members %>
     <% end %>

@@ -21,6 +21,8 @@ class Public::PhotosController < ApplicationController
   def show
     @photo = Photo.find(params[:id])
     @member = @photo.member
+    @comment =PhotoComment.new
+    @comments = @photo.photo_comments.all.order(created_at: :desc)
   end
 
   def edit
@@ -44,4 +46,9 @@ class Public::PhotosController < ApplicationController
   def photo_params
     params.require(:photo).permit(:image, :body, :address, :member_id)
   end
+  
+  def favorited_by?(member)
+    favorites.exists?(member_id: member.id)
+  end
+  
 end

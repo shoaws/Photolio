@@ -1,34 +1,64 @@
 <div class="container" style="height: 80vh;">
   <div class="row">
 
-    <div class="col-4">
-      <%= render 'public/members/info', member: @member %>
-    </div>
-
-    <div class="col-8">
-
-      <h3 class="mt-3">作品詳細</h3>
-
+    <div>
       <div>
-        <div class="mb-4 d-flex justify-content-center">
-          <%= image_tag @photo.image, size: "450x450", style: "object-fit: contain;" %>
+        <div class="mb-3 d-flex justify-content-center">
+          <%= image_tag @photo.image, size: "680x450", style: "object-fit: contain;" %>
+        </div>
+        <div class="mb-2 d-flex align-items-center">
+          <%= link_to member_path(@member), class: "text-dark text-decoration-none" do %>
+            <%= image_tag @member.get_profile_image, size: "50x50", class: "mr-3 member-icon" %>
+            <%= @member.nickname %>
+          <% end %>
+          <div class="ml-auto mr-2">
+            <p id="favorite_btn"><%= render 'public/favorites/btn', photo: @photo %></p>
+            <p>撮影地: <%= @photo.address %></p>
+          </div>
+        </div>
         </div>
         <div class="mx-3 mb-2 bg-light" style="height: 40px;">
-          
           <p class="p-2 text-center"><%= @photo.body %></p>
         </div>
-        <div class="row text-center">
-          <div class="col-6">
-            <%= link_to 'Edit', edit_photo_path(@photo) %>
+        <% if @member == current_member %>
+          <div class="row text-center">
+            <div class="col-6">
+              <%= link_to 'Edit', edit_photo_path(@photo), class: "btn btn-outline-secondary" %>
+            </div>
+            <div class="col-6">
+              <%= link_to 'destroy', photo_path(@photo), method: :delete, class: "btn btn-outline-secondary" %>
+            </div>
           </div>
-          <div class="col-6">
-            <%= link_to 'destroy', photo_path(@photo), method: :delete %>
-          </div>
+        <% end %>
+      </div>
+
+      <div class="col-3 mx-auto">
+        <table class="table">
+          <% @comments.last(6).each do |comment| %>
+          <tr>
+            <td><%= image_tag comment.member.get_profile_image, size: "30x30", class: "mr-3 member-icon" %></td>
+            <td><%= comment.comment %></td>
+            <td>
+              <% if comment.member == current_member %>
+                <%= link_to '削除', photo_photo_comment_path(@photo, comment), method: :delete %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <div style="position: fixed; right: 15%; bottom: 10%;">
+        <div>
+          <%= form_with model: [@photo, @comment] do |f| %>
+            <%= f.text_area :comment, placeholder: "コメントを入力" %>
+            <%= f.submit '送信' %>
+          <% end %>
+        </div>
+        <div class="mt-4 mr-5 text-right">
+          <%= link_to '写真展へ>', photos_path %>
         </div>
       </div>
-      <div class="mt-4 mr-5 text-right">
-        <%= link_to '写真展へ>', photos_path %>
-      </div>
     </div>
+
   </div>
 </div>
