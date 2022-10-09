@@ -13,52 +13,67 @@
           <% end %>
           <div class="ml-auto mr-2">
             <p id="favorite_btn"><%= render 'public/favorites/btn', photo: @photo %></p>
-            <p>撮影地: <%= @photo.address %></p>
+            <p class="d-flex align-items-center">
+              撮影地:
+              <%= link_to photo_maps_path(@photo) do %>
+                <span class="ml-1 px-2 py-1 text-white btn btn-primary border" style="border-radius: 40px;">
+                  <%= @photo.address %>
+                </span>
+              <% end %>
+            </p>
           </div>
         </div>
-        </div>
+      </div>
         <div class="mx-3 mb-2 bg-light" style="height: 40px;">
           <p class="p-2 text-center"><%= @photo.body %></p>
         </div>
         <% if @member == current_member %>
           <div class="row text-center">
-            <div class="col-6">
+            <div class="col-4">
               <%= link_to 'Edit', edit_photo_path(@photo), class: "btn btn-outline-secondary" %>
             </div>
-            <div class="col-6">
+            <div class="col-4">
               <%= link_to 'destroy', photo_path(@photo), method: :delete, class: "btn btn-outline-secondary" %>
+            </div>
+            <div class="col-4">
+              <%= link_to 'Best_Photo', photo_best_photo_path(@photo), method: :post %>
             </div>
           </div>
         <% end %>
       </div>
 
-      <div class="col-3 mx-auto">
-        <table class="table">
-          <% @comments.last(6).each do |comment| %>
-          <tr>
-            <td><%= image_tag comment.member.get_profile_image, size: "30x30", class: "mr-3 member-icon" %></td>
-            <td><%= comment.comment %></td>
-            <td>
-              <% if comment.member == current_member %>
-                <%= link_to '削除', photo_photo_comment_path(@photo, comment), method: :delete %>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </table>
-      </div>
-      <div style="position: fixed; right: 15%; bottom: 10%;">
+      <div class="col-4 mx-auto">
+        <div class="mb-2 bg-light border" style="height: 60vh; overflow-y: scroll;">
+          <table class="table">
+            <% @comments.each do |comment| %>
+            <tr>
+              <td>
+                <%= link_to member_path(comment.member) do %>
+                  <%= image_tag comment.member.get_profile_image, size: "30x30", class: "mr-3 member-icon" %>
+                <% end %>
+              </td>
+              <td style="word-wrap: break-word;"><%= comment.comment %></td>
+              <td style="width: 60px;">
+                <% if comment.member == current_member %>
+                  <%= link_to '削除', photo_photo_comment_path(@photo, comment), method: :delete %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
         <div>
-          <%= form_with model: [@photo, @comment] do |f| %>
-            <%= f.text_area :comment, placeholder: "コメントを入力" %>
-            <%= f.submit '送信' %>
-          <% end %>
-        </div>
-        <div class="mt-4 mr-5 text-right">
-          <%= link_to '写真展へ>', photos_path %>
+          <div>
+            <%= form_with model: [@photo, @comment] do |f| %>
+              <%= f.text_area :comment, placeholder: "コメントを入力" %>
+              <%= f.submit '送信' %>
+            <% end %>
+          </div>
+          <div class="mt-4 text-right">
+            <%= link_to '写真展へ>', photos_path %>
+          </div>
         </div>
       </div>
-    </div>
 
   </div>
 </div>

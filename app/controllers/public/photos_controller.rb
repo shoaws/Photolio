@@ -44,11 +44,11 @@ class Public::PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:image, :body, :address, :member_id)
+    params.require(:photo).permit(:image, :body, :address, :latitude, :longitude, :member_id)
   end
-  
+
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
   end
-  
+
 end

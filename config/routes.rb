@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     resources :photos do
       resource :favorites, only: [:create, :index, :destroy]
       resources :photo_comments, only: [:create, :destroy]
+      resources :maps, only: [:index]
+      post 'best_photo' => 'members#best_photo', as: 'best_photo'
     end
     get 'homes/top'
     get '/homes/about' => 'homes#about', as: 'about'

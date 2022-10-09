@@ -37,9 +37,9 @@
       <%= link_to '編集', edit_member_path(member), class: "px-5 btn btn-secondary" %>
     <% else %>
       <% if current_member.following?(member) %>
-        <%= link_to "フォロー外す", member_relationships_path(member.id), method: :delete %>
+        <%= link_to "フォロー中", member_relationships_path(member.id), method: :delete, class: "btn btn-outline-primary" %>
       <% else %>
-        <%= link_to "フォローする", member_relationships_path(member.id), method: :post %>
+        <%= link_to "フォローする", member_relationships_path(member.id), method: :post, class: "btn btn-primary" %>
       <% end %>
     <% end %>
   <% else %>
@@ -51,10 +51,12 @@
 </div>
 
 <div>
-  <p class="mb-2"><span class="p-1 border border-dark rounded">お気に入りの1枚</span></p>
+  <p class="mb-2"><span class="p-1 bg-light text-dark rounded">お気に入りの1枚</span></p>
   <div class="text-center">
-    <% if member.best_image.attached? %>
-      <%= image_tag member.best_image, size: "200x200", style: "object-fit: contain" %>
+    <% unless member.best_photo_id.blank? %>
+      <%= link_to photo_path(best_photo) do %>
+        <%= image_tag best_photo.image, size: "200x200", style: "object-fit: contain" %>
+      <% end %>
     <% else %>
       <p class="mt-5">撮影中…</p>
     <% end %>

@@ -38,6 +38,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.text :introduction
       t.string :phone_number, null: false
       t.boolean :is_deleted, null: false, default: false
+      t.integer :best_photo_id
 
 
       t.timestamps null: false

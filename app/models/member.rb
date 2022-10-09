@@ -15,7 +15,6 @@ class Member < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   has_one_attached :profile_image
-  has_one_attached :best_image
 
   def get_profile_image
     unless profile_image.attached?

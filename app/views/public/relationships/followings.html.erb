@@ -1,11 +1,13 @@
 <div class="container">
   <h4 class=""><%= @members.count %>フォロー中</h4>
-  <div class="col-7 mx-auto">
-    <% if @members.count == 0 %>
-      <h6>他のユーザーをフォローしましょう！</h6>
+  <div class="col-7 mx-auto p-2 bg-white">
+
+    <%= render 'index', members: @members %>
+
+    <div class="p-2 bg-light border">
+      <h6>他のメンバーをフォローしましょう！</h6>
       <%= render 'index', members: @random_members %>
-    <% else %>
-      <%= render 'index', members: @members %>
-    <% end %>
+    </div>
+
   </div>
 </div>
