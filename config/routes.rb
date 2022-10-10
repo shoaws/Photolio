@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:destroy]
     end
     get 'homes/top'
-    root to: 'admin/homes#top'
+    root to: 'homes#top'
   end
 
   root to: 'public/homes#top'
