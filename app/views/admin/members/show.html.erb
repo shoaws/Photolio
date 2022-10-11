@@ -5,16 +5,55 @@
     </div>
     <div>
       <table cellpadding="5" class="mx-auto mb-3 font-weight-bold">
+        <tr>
+          <td>展示数:<%= @member.photos.count %></td>
+          <td>
+            フォロー:<%= @member.followings.count %>
+          </td>
+          <td>
+            フォロワー:<%= @member.followers.count %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div>
+    <table>
       <tr>
-        <td>展示数:<%= @member.photos.count %></td>
+        <th>名前</th>
+        <td><%= @member.last_name %> <%= @member.first_name %></td>
+        <th>ニックネーム</th>
+        <td><%= @member.nickname %></td>
+      </tr>
+      <tr>
+        <th>ステータスメッセージ</th>
+        <td><%= @member.introduction %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @member.email %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @member.phone_number %></td>
+      </tr>
+      <tr>
+        <th>アカウント状態</th>
         <td>
-          フォロー:<%= @member.followings.count %>
-        </td>
-        <td>
-          フォロワー:<%= @member.followers.count %>
+          <% if @member.is_deleted == false %>
+            <span class="text-success font-weight-bold">
+              有効
+            </span>
+          <% else %>
+            <span class="text-secondary">
+              退会
+            </span>
+          <% end %>
         </td>
       </tr>
-      </table>
+    </table>
+    <div>
+    <%= link_to '編集する', edit_admin_member_path(@member), class: "btn btn-success mr-5" %>
     </div>
   </div>
 </div>

@@ -14,34 +14,43 @@
 mapを関数の外で定義(codeAddressでも使うため)
 geocoderを用意
 */
-
-let map
-let geocoder
+let map;
+let geocoder;
 
 function initMap(){
   // geocoderを初期化
   geocoder = new google.maps.Geocoder()
 
+  const photoLatLng = {lat: <%= @photo.latitude %>, lng: <%= @photo.longitude %>};
   map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: <%= @photo.latitude %>, lng: <%= @photo.longitude %>},
-  zoom: 8
-
+    zoom: 10,
+    center: photoLatLng
   });
+  const marker = new google.maps.Marker({
+    position: photoLatLng,
+    map: map
+  });
+
+
+
 
   // let pos = new google.maps.LatLng(
   // <%#= @photo.latitude %>, //latitude
   // <%#= @photo.longitude %>  //longitude
   // );
-  
+
   // map.setCenter(pos)
   // let marker = new google.maps.Marker({
   //   map: map,
   //   position: pos
   // });
-  
+
 }
 
+
 function codeAddress(){
+  geocoder = new google.maps.Geocoder()
+
   // 入力を取得
   let inputAddress = document.getElementById('address').value;
 
