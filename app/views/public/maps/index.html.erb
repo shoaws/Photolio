@@ -5,6 +5,7 @@
 
 <!-- buttonをクリックしたらcodeAddressを実行　-->
 <input type="button" value="Encode" onclick="codeAddress()">
+
 <div id='map' style="height: 70vh;">
 </div>
 
@@ -26,10 +27,18 @@ function initMap(){
   zoom: 8
 
   });
-  // new google.maps.Marker({
-  //     position: map
-  //     map,
+
+  // let pos = new google.maps.LatLng(
+  // <%#= @photo.latitude %>, //latitude
+  // <%#= @photo.longitude %>  //longitude
+  // );
+  
+  // map.setCenter(pos)
+  // let marker = new google.maps.Marker({
+  //   map: map,
+  //   position: pos
   // });
+  
 }
 
 function codeAddress(){
@@ -39,10 +48,10 @@ function codeAddress(){
   // geocodingしたあとmapを移動
   geocoder.geocode( { 'address': inputAddress}, function(results, status) {
     if (status == 'OK') {
-　　　　　　　　　　　　// map.setCenterで地図が移動
+　　　// map.setCenterで地図が移動
       map.setCenter(results[0].geometry.location);
 
-　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
       var marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location

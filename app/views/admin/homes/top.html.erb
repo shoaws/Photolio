@@ -1,2 +1,27 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <h4>メンバー一覧</h4>
+  <div class="d-flex justify-content-center">
+    <table class="table col-8">
+      <thead>
+        <tr>
+          <th style="width: 60px;">Icon</th>
+          <th>Name</th>
+          <th>Nicname</th>
+          <th style="width: 60px;">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @members.each do |member| %>
+          <tr>
+            <td>
+              <%= image_tag member.get_profile_image, size: "50x50", class: "mr-3 member-icon" %>
+            </td>
+            <td><%= member.last_name %> <%=member.first_name %></td>
+            <td><%= member.nickname %></td>
+            <td><%= link_to "Show>", admin_member_path(member) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

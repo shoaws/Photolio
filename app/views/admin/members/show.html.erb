@@ -1,2 +1,20 @@
-<h1>Admin::Members#show</h1>
-<p>Find me in app/views/admin/members/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div>
+      <%= image_tag @member.get_profile_image, size: "80x80", class: "mr-3 member-icon" %>
+    </div>
+    <div>
+      <table cellpadding="5" class="mx-auto mb-3 font-weight-bold">
+      <tr>
+        <td>展示数:<%= @member.photos.count %></td>
+        <td>
+          フォロー:<%= @member.followings.count %>
+        </td>
+        <td>
+          フォロワー:<%= @member.followers.count %>
+        </td>
+      </tr>
+      </table>
+    </div>
+  </div>
+</div>

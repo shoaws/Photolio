@@ -10,35 +10,29 @@
             <ul class="navbar-nav">
               <% if member_signed_in? %>
                 <li class="nav-item align-top">
-                  <%= link_to 'マイページ', member_path(current_member), class: 'mr-3 btn btn-outline-info' %>
+                  <%= link_to 'マイページ', member_path(current_member), class: "mr-3 btn btn-outline-info" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '写真館へ', photos_path, class: 'mr-3 btn btn-outline-info' %>
+                  <%= link_to '写真館へ', photos_path, class: "mr-3 btn btn-outline-info" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '新規投稿', new_photo_path, class: 'mr-3 btn btn-outline-info' %>
+                  <%= link_to '新規投稿', new_photo_path, class: "mr-3 btn btn-outline-info" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'btn btn-outline-info' %>
+                  <%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: "btn btn-outline-info" %>
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item align-top">
-                  <%= link_to "商品一覧", admin_items_path, class: 'mr-3 btn btn-outline-info' %>
+                  <%= link_to "メンバー一覧", admin_root_path, class: "mr-3 btn btn-outline-info" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "会員一覧", admin_customers_path, class: 'mr-3 btn btn-outline-info' %>
+                  <%= link_to "投稿一覧", admin_photos_path, class: "mr-3 btn btn-outline-info" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "注文履歴一覧", admin_root_path, class: 'mr-3 btn btn-outline-info' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "ジャンル一覧", admin_genres_path, class: 'mr-3 btn btn-outline-info' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-info' %>
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-info" %>
                 </li>
               <% else %>
-                
+                <%= link_to "ゲストログイン", members_guest_sign_in_path, method: :post, "data-confirm" => "ゲストメンバーとしてログインします", class: "btn btn-outline-info" %>
               <% end %>
             </ul>
           </div>
