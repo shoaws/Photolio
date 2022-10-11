@@ -53,7 +53,7 @@
 <div>
   <p class="mb-2"><span class="p-1 bg-light text-dark rounded">お気に入りの1枚</span></p>
   <div class="text-center">
-    <% unless member.best_photo_id.blank? %>
+    <% unless best_photo.blank? %>
       <%= link_to photo_path(best_photo) do %>
         <%= image_tag best_photo.image, size: "200x200", style: "object-fit: contain" %>
       <% end %>
