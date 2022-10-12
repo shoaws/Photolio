@@ -48,8 +48,13 @@
         <%= image_tag @member.get_profile_image, size: "50x50", id: "preview", class: "member-icon" %>
       </div>
     </div>
-    <div class="text-center my-3">
-      <%= f.submit "更新", class: "btn btn-success px-5" %>
+    <div class="row my-3 d-flex justify-content-center">
+      <div class="">
+        <%= f.submit "更新", class: "btn btn-success mr-5 px-5" %>
+      </div>
+      <div>
+        <%= link_to "退会する", unsubscribe_path(@member.id), class: "btn btn-danger px-5" %>
+      </div>
     </div>
   <% end %>
 

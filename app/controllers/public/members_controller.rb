@@ -23,6 +23,17 @@ class Public::MembersController < ApplicationController
     current_member.save
     redirect_to photo_path(photo)
   end
+  
+  def unsubscribe
+    @member = Member.find_by(id: current_member.id)
+  end
+
+  def withdraw
+    @member = Member.find_by(id: current_member.id)
+    @member.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
 
   private
 

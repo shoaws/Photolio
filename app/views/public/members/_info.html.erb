@@ -34,7 +34,9 @@
 <div class="text-center my-5">
   <% if member.email != "guest@example.com" %>
     <% if member == current_member %>
-      <%= link_to '編集', edit_member_path(member), class: "px-5 btn btn-secondary" %>
+      <%= link_to edit_member_path(member), class: "px-5 btn btn-secondary" do %>
+        <i class="fa-solid fa-user-pen"></i>
+      <% end %>
     <% else %>
       <% if current_member.following?(member) %>
         <%= link_to "フォロー中", member_relationships_path(member.id), method: :delete, class: "btn btn-outline-primary" %>

@@ -4,7 +4,7 @@
       <%= link_to "マイページ", member_path(current_member), class: "font-weight-bold btn btn-outline-secondary" %>
     </div>
     <div class="col-3">
-      <%= link_to "写真館へ", photos_path, class: "font-weight-bold btn btn-outline-secondary" %>
+      <%= link_to "写真展へ", photos_path, class: "font-weight-bold btn btn-outline-secondary" %>
     </div>
     <div class="col-3">
       <%= link_to "新規投稿", new_photo_path, class: "font-weight-bold btn btn-outline-secondary" %>
@@ -18,7 +18,7 @@
     </div>
     <div class="col-3">
       <%= link_to members_guest_sign_in_path, method: :post, "data-confirm" => "ゲストメンバーとしてログインします", class: "font-weight-bold btn btn-outline-secondary" do %>
-        写真館へ
+        写真展へ
       <% end %>
     </div>
     <div class="col-3">

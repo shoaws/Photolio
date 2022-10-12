@@ -1,2 +1,8 @@
-<h1>Admin::Photos#index</h1>
-<p>Find me in app/views/admin/photos/index.html.erb</p>
+<div class="container">
+  <div class="mb-4 text-center">
+    <h3>All Photos</h3>
+  </div>
+  
+  <%= render 'public/photos/index', photos: @photos %>
+  
+</div>

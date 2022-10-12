@@ -23,27 +23,13 @@ function initMap(){
 
   const photoLatLng = {lat: <%= @photo.latitude %>, lng: <%= @photo.longitude %>};
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 10,
+    zoom: 12,
     center: photoLatLng
   });
   const marker = new google.maps.Marker({
     position: photoLatLng,
     map: map
   });
-
-
-
-
-  // let pos = new google.maps.LatLng(
-  // <%#= @photo.latitude %>, //latitude
-  // <%#= @photo.longitude %>  //longitude
-  // );
-
-  // map.setCenter(pos)
-  // let marker = new google.maps.Marker({
-  //   map: map,
-  //   position: pos
-  // });
 
 }
 

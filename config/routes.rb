@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: 'admin/sessions'
   }
+  
+  #退会機能
+  get 'members/unsubscribe' => 'public/members#unsubscribe', as: 'unsubscribe'
+  patch 'members/withdraw' => 'public/members#withdraw', as: 'withdraw'
 
   scope module: :public do
     resources :members, only: [:index, :show, :edit, :update] do

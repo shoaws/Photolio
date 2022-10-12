@@ -1,2 +1,66 @@
-<h1>Admin::Members#edit</h1>
-<p>Find me in app/views/admin/members/edit.html.erb</p>
+<div class="container">
+
+  <%= form_with model: @member, url: admin_member_path(@member) do |f| %>
+    <div class="row mt-5 mx-auto justify-content-center" style="width: 70%;">
+      <%#= render "layouts/errors", obj: @member %>
+      <table class="table table-borderless table-sm">
+        <tr>
+          <td class="align-middle"><span>名前</span></td>
+          <td class="align-middle">(姓)</td>
+          <td><%= f.text_field :last_name, placeholder: "令和", class: "form-control" %></td>
+          <td class="align-middle">(名)</td>
+          <td class="align-middle"><%= f.text_field :first_name, placeholder: "道子", class: "form-control" %></td>
+        </tr>
+
+        <tr>
+          <td class="align-middle"><span>ニックネーム</span></td>
+          <td></td>
+          <td><%= f.text_field :nickname, placeholder: "レイワ", style: "border-radius: 8px;", class: "form-control" %></td>
+        </tr>
+
+        <tr>
+          <td class="align-middle"><span>メールアドレス</span></td>
+          <td></td>
+          <td><%= f.text_field :email, autocomplete: "email", placeholder: "sample@example.com", style: "border-radius: 8px;", class: "form-control" %></td>
+        </tr>
+
+        <tr>
+          <td class="align-middle"><span>Introduction</span></td>
+          <td></td>
+          <td colspan="3"><%= f.text_field :introduction, size: "55x20", style: "border-radius: 8px;", class: "form-control" %></td>
+        </tr>
+
+        <tr>
+          <td class="align-middle">電話番号(ハイフンなし)</td>
+          <td></td>
+          <td><%= f.text_field :phone_number, placeholder: "0000000000", style: "border-radius: 8px;", class: "form-control" %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="row justify-content-center align-items-center">
+      <div class="col-6">
+        <label class="col-4 mr-2">プロフィール画像</label>
+        <%= f.file_field :profile_image, accept: "image/*", onchange: "previewImage(this);" %>
+      </div>
+      <div class="col-2 text-center">
+        <%= image_tag @member.get_profile_image, size: "50x50", id: "preview", class: "member-icon" %>
+      </div>
+    </div>
+
+    <div class="row my-3 d-flex justify-content-center">
+      <div class="mr-4 lead">
+        <%= f.radio_button :is_deleted, :false %> 有効
+      </div>
+      <div class="lead">
+        <%= f.radio_button :is_deleted, :true %> 退会
+      </div>
+    </div>
+    <div class="text-center my-5">
+      <%= f.submit "更新", class: "btn btn-success font-weight-bold", style: "padding: 10px 70px;" %>
+    </div>
+  <% end %>
+
+</div>
+
+<%= render 'layouts/previewimage' %>
