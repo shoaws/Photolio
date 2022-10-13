@@ -40,6 +40,12 @@ class Public::PhotosController < ApplicationController
     photo.destroy
     redirect_to member_path(current_member)
   end
+  
+  def search
+    @photos = Photo.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
 
   private
 

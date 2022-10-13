@@ -28,7 +28,7 @@
           <p class="p-2 text-center"><%= @photo.body %></p>
         </div>
         <% if @member == current_member %>
-          <div class="row text-center">
+          <div class="row text-center align-items-center">
             <div class="col-4">
               <%= link_to 'Edit', edit_photo_path(@photo), class: "btn btn-outline-secondary" %>
             </div>
@@ -36,7 +36,15 @@
               <%= link_to 'destroy', photo_path(@photo), method: :delete, class: "btn btn-outline-secondary" %>
             </div>
             <div class="col-4">
-              <%= link_to 'Best_Photo', photo_best_photo_path(@photo), method: :post %>
+              <% if @member.best_photo_id == @photo.id %>
+                <%= link_to photo_best_photo_path(@photo), method: :post, class: "text-warning" do %>
+                  <span class="lead">★</span> お気に入り
+                <% end %>
+              <% else %>
+                <%= link_to photo_best_photo_path(@photo), method: :post, class: "text-dark" do %>
+                  <span class="lead">☆</span> お気に入りに登録
+                <% end %>
+              <% end %>
             </div>
           </div>
         <% end %>

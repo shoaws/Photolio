@@ -1,0 +1,28 @@
+<div class="container" style="height: 80vh;">
+  <div class="row">
+
+    <div class="col-4 bg-white" style="height: 80vh;">
+      <%= render 'public/members/info', member: @member, best_photo: @best_photo %>
+    </div>
+
+    <div class="col-7 ml-5">
+      <h3 class="ml-3">いいね一覧</h3>
+      <div class="ml-5" style="height: 70vh;">
+        <div class="d-flex flex-wrap">
+          <% @photos.each do |photo| %>
+            <div class="m-3">
+              <%= link_to photo_path(photo) do %>
+                <%= image_tag photo.image, size: "150x150", style: "object-fit: cover;" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="text-right">
+        <%= link_to '写真展へ>', photos_path %>
+      </div>
+
+    </div>
+  </div>
+</div>

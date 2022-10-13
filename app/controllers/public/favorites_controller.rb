@@ -12,4 +12,11 @@ class Public::FavoritesController < ApplicationController
     favorite.destroy
     render 'btn_change'
   end
+  
+  def index
+    @member = Member.find(params[:member_id])
+    @best_photo = Photo.find_by(id: @member.best_photo_id)
+    favorites = Favorite.where(member_id: @member.id).pluck(:photo_id)
+    @photos = Photo.find(favorites)
+  end
 end

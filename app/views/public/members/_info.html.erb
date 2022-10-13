@@ -9,21 +9,28 @@
   　  <p class="text-secondary">ステータスメッセージを入力しましょう</p>
     <% end %>
   <% else %>
-    <p><%= member.introduction %></p>
+    <p class="text-break"><%= member.introduction %></p>
   <% end %>
 </div>
 
 <table cellpadding="5" class="mx-auto mb-3 font-weight-bold">
   <tr>
     <td>展示数:<%= member.photos.count %></td>
+    <td>
+      <%= link_to member_favorites_path(member), class: "text-dark" do %>
+        いいね数:<%= member.favorites.count %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
     <% if member.email != "guest@example.com" %>
       <td>
-        <%= link_to member_followings_path(member) do %>
+        <%= link_to member_followings_path(member), class: "text-dark" do %>
           フォロー:<%= member.followings.count %>
         <% end %>
       </td>
       <td>
-        <%= link_to member_followers_path(member) do %>
+        <%= link_to member_followers_path(member), class: "text-dark" do %>
           フォロワー:<%= member.followers.count %>
         <% end %>
       </td>
@@ -31,7 +38,7 @@
   </tr>
 </table>
 
-<div class="text-center my-5">
+<div class="text-center my-4">
   <% if member.email != "guest@example.com" %>
     <% if member == current_member %>
       <%= link_to edit_member_path(member), class: "px-5 btn btn-secondary" do %>
@@ -53,7 +60,7 @@
 </div>
 
 <div>
-  <p class="mb-2"><span class="p-1 bg-light text-dark rounded">お気に入りの1枚</span></p>
+  <p class="mb-2"><span class="p-1 bg-light text-dark rounded"><i class="fa-solid fa-star text-warning"></i>お気に入りの1枚</span></p>
   <div class="text-center">
     <% unless best_photo.blank? %>
       <%= link_to photo_path(best_photo) do %>
