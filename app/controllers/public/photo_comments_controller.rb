@@ -1,16 +1,22 @@
 class Public::PhotoCommentsController < ApplicationController
   def create
     @photo = Photo.find(params[:photo_id])
+    @comments = @photo.photo_comments.all.order(created_at: :desc)
     comment = current_member.photo_comments.new(photo_comment_params)
     comment.photo_id = @photo.id
-    comment.save
-    redirect_to request.referer
+    if comment.save
+      render 'comment_area'
+    else
+      redirect_to 'photos/show'
+    end
   end
   
   def destroy
+    @photo = Photo.find(params[:photo_id])
+    @comments = @photo.photo_comments.all.order(created_at: :desc)
     @comment = PhotoComment.find(params[:id])
     @comment.destroy
-    redirect_to request.referer
+    render 'comment_area'
   end
   
   private

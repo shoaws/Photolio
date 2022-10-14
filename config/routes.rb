@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :members, only: [:index, :show, :edit, :update, :destroy]
     resources :photos, only: [:index, :show, :destroy] do
-      resources :post_comments, only: [:destroy]
+      resources :photo_comments, only: [:destroy]
     end
     get 'homes/top'
     root to: 'homes#top'

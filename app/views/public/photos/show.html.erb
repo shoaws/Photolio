@@ -3,10 +3,10 @@
 
     <div>
       <div>
-        <div class="mb-3 d-flex justify-content-center">
+        <div class="mb-2 d-flex justify-content-center">
           <%= image_tag @photo.image, size: "680x450", style: "object-fit: contain;" %>
         </div>
-        <div class="mb-2 d-flex align-items-center">
+        <div class="mb-1 d-flex align-items-center">
           <%= link_to member_path(@member), class: "text-dark text-decoration-none" do %>
             <%= image_tag @member.get_profile_image, size: "50x50", class: "mr-3 member-icon" %>
             <%= @member.nickname %>
@@ -33,7 +33,7 @@
               <%= link_to 'Edit', edit_photo_path(@photo), class: "btn btn-outline-secondary" %>
             </div>
             <div class="col-4">
-              <%= link_to 'destroy', photo_path(@photo), method: :delete, class: "btn btn-outline-secondary" %>
+              <%= link_to 'destroy', photo_path(@photo), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-secondary" %>
             </div>
             <div class="col-4">
               <% if @member.best_photo_id == @photo.id %>
@@ -51,31 +51,12 @@
       </div>
 
       <div class="col-4 mx-auto">
-        <div class="mb-2 bg-light border" style="height: 60vh; overflow-y: scroll;">
-          <table class="table">
-            <% @comments.each do |comment| %>
-            <tr>
-              <td>
-                <%= link_to member_path(comment.member) do %>
-                  <%= image_tag comment.member.get_profile_image, size: "30x30", class: "mr-3 member-icon" %>
-                <% end %>
-              </td>
-              <td style="word-wrap: break-word;"><%= comment.comment %></td>
-              <td style="width: 60px;">
-                <% if comment.member == current_member %>
-                  <%= link_to '削除', photo_photo_comment_path(@photo, comment), method: :delete %>
-                <% end %>
-              </td>
-            </tr>
-            <% end %>
-          </table>
+        <div id="photo_comments" class="mb-2 bg-light border" style="height: 60vh; overflow-y: scroll;">
+          <%= render 'public/photo_comments/comments', photo: @photo, comments: @comments %>
         </div>
         <div>
-          <div>
-            <%= form_with model: [@photo, @comment] do |f| %>
-              <%= f.text_area :comment, placeholder: "コメントを入力" %>
-              <%= f.submit '送信' %>
-            <% end %>
+          <div id="comment_form">
+            <%= render 'public/photo_comments/form', photo: @photo, comment: @comment %>
           </div>
           <div class="mt-4 text-right">
             <%= link_to '写真展へ>', photos_path %>
