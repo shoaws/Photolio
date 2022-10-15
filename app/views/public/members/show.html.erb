@@ -9,7 +9,7 @@
       <h3 class="ml-3">投稿一覧</h3>
       <div class="ml-5" style="height: 70vh;">
         <div class="d-flex flex-wrap">
-          <% @member.photos.each do |photo| %>
+          <% @photos.each do |photo| %>
             <div class="m-3">
               <%= link_to photo_path(photo) do %>
                 <%= image_tag photo.image, size: "150x150", style: "object-fit: cover;" %>
@@ -18,7 +18,11 @@
           <% end %>
         </div>
       </div>
-
+      
+      <div class="d-flex justify-content-center">
+        <%= paginate @photos %>
+      </div>
+      
       <div class="text-right">
         <%= link_to '写真展へ>', photos_path %>
       </div>

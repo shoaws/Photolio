@@ -4,6 +4,7 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    @photos = @member.photos.page(params[:page]).per(9)
     @best_photo = Photo.find_by(id: @member.best_photo_id)
   end
 
