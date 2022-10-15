@@ -6,11 +6,11 @@
     </div>
 
     <div class="col-7 ml-5">
-      <h3 class="ml-3">いいね一覧</h3>
-      <div class="ml-5" style="height: 70vh;">
+      <h3 class="ml-3">Favorite Photos</h3>
+      <div class="ml-5" style="height: 62vh;">
         <div class="d-flex flex-wrap">
           <% @photos.each do |photo| %>
-            <div class="m-3">
+            <div class="mx-3 my-1">
               <%= link_to photo_path(photo) do %>
                 <%= image_tag photo.image, size: "150x150", style: "object-fit: cover;" %>
               <% end %>
@@ -18,9 +18,18 @@
           <% end %>
         </div>
       </div>
+      
+      <div class="d-flex justify-content-center">
+        <%= paginate @photos %>
+      </div>
 
-      <div class="text-right">
-        <%= link_to '写真展へ>', photos_path %>
+      <div class="row">
+        <div class="col-6">
+          <%= link_to '<My Photos', member_path(@member) %>
+        </div>
+        <div class="col-6 text-right">
+          <%= link_to 'All Photos>', photos_path %>
+        </div>
       </div>
 
     </div>

@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2>New Photo</h2>
     <%= form_with model:@photo do |f| %>
-      <%#= render 'layouts/errors', obj: @photo %>
+      <%= render 'layouts/errors', obj: @photo %>
       <div class="my-4" style="height: 250px;">
         <div class="form-group">
           <%= f.label :image %>

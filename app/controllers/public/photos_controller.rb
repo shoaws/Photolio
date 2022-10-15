@@ -10,12 +10,12 @@ class Public::PhotosController < ApplicationController
     if @photo.save
       redirect_to photo_path(@photo)
     else
-      redirect_to request.referer
+      render :new
     end
   end
 
   def index
-    @photos = Photo.all
+    @photos = Photo.page(params[:page]).per(12)
   end
 
   def show
@@ -30,9 +30,12 @@ class Public::PhotosController < ApplicationController
   end
 
   def update
-    photo = Photo.find(params[:id])
-    photo.update(photo_params)
-    redirect_to photo_path(photo)
+    @photo = Photo.find(params[:id])
+    if @photo.update(photo_params)
+      redirect_to photo_path(photo)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -40,9 +43,10 @@ class Public::PhotosController < ApplicationController
     photo.destroy
     redirect_to member_path(current_member)
   end
-  
+
   def search
-    @photos = Photo.search(params[:keyword])
+    @search_photos = Photo.search(params[:keyword])
+    @photos = @search_photos.page(params[:page]).per(12)
     @keyword = params[:keyword]
     render "index"
   end

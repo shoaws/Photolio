@@ -11,6 +11,8 @@ class Photo < ApplicationRecord
   after_validation :geocode, if: :address_changed?
   
   validates :image, presence: true
+  validates :body, length: {maximum: 20}
+  validates :address, presence: true
 
   # いいねしているかどうか
   def favorited_by?(member)

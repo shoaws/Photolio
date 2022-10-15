@@ -18,5 +18,6 @@ class Public::FavoritesController < ApplicationController
     @best_photo = Photo.find_by(id: @member.best_photo_id)
     favorites = Favorite.where(member_id: @member.id).pluck(:photo_id)
     @photos = Photo.find(favorites)
+    @photos = Kaminari.paginate_array(@photos).page(params[:page]).per(9)
   end
 end

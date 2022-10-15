@@ -15,6 +15,12 @@ class Member < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   has_one_attached :profile_image
+  
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :nickname, presence: true, length: {maximum: 6}
+  validates :introduction, length: {maximum: 30}
+  validates :phone_number, presence: true
 
   # アイコン表示
   def get_profile_image
