@@ -14,8 +14,11 @@ class Public::MembersController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
-    @member.update(member_params)
-    redirect_to member_path(@member)
+    if @member.update(member_params)
+      redirect_to member_path(@member)
+    else
+      render :edit
+    end
   end
 
   def best_photo

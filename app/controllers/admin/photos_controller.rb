@@ -1,6 +1,6 @@
 class Admin::PhotosController < ApplicationController
   def index
-    @photos = Photo.all
+    @photos = Photo.page(params[:page]).per(12)
   end
 
   def show

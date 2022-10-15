@@ -11,6 +11,9 @@
           <div id="comment_form">
             <%= render 'public/photo_comments/form', photo: @photo, comment: @comment %>
           </div>
+          <div id="comment_error">
+            <%= render 'layouts/errors', obj: @comment %>
+          </div>
           <div class="mt-4 text-right">
             <%= link_to 'All Photos>', photos_path %>
           </div>

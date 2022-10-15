@@ -3,7 +3,7 @@
   <h4><span class="py-2 px-4 bg-light">情報編集</span></h4>
   <%= form_with model: @member do |f| %>
     <div class="row mt-5 mx-auto justify-content-center" style="width: 70%;">
-      <%#= render "layouts/errors", obj: @member %>
+      <%= render "layouts/errors", obj: @member %>
       <table class="table table-borderless table-sm">
         <tr>
           <td class="align-middle"><span>名前</span></td>
@@ -26,7 +26,7 @@
         </tr>
 
         <tr>
-          <td class="align-middle"><span>Introduction</span></td>
+          <td class="align-middle"><span>ステータスメッセージ</span></td>
           <td></td>
           <td colspan="3"><%= f.text_field :introduction, size: "55x20", style: "border-radius: 8px;", class: "form-control" %></td>
         </tr>

@@ -11,10 +11,8 @@
       <div class="ml-auto mr-2">
         <p>
           <span id="favorite_btn"><%= render 'public/favorites/btn', photo: photo %></span>
-          <span class="ml-3">
-            <%= link_to photo_path(photo), class: "text-dark text-decoration-none" do %>
-              <i class="fa-regular fa-comment lead"></i><%= photo.photo_comments.count %>
-            <% end %>
+          <span id="comment_count" class="ml-3">
+            <%= render 'public/photo_comments/comment_count', photo: photo %>
           </span>
         </p>
         <p class="d-flex align-items-center justify-content-end">
