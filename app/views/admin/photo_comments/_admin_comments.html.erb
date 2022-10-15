@@ -7,8 +7,8 @@
         <% end %>
       </td>
       <td style="word-wrap: break-word;"><%= comment.comment %></td>
-      <td style="width: 60px;">
-        <%= link_to '削除', admin_photo_photo_comment_path(photo, comment), method: :delete, "data-confirm" => "このコメントを削除します", remote: true %>
+      <td style="width: 70px;">
+        <%= link_to '削除', admin_photo_photo_comment_path(photo, comment), method: :delete, class: "btn btn-danger btn-sm", "data-confirm" => "このコメントを削除します", remote: true %>
       </td>
     </tr>
   <% end %>

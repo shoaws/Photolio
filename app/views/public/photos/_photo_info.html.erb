@@ -1,0 +1,55 @@
+<div>
+  <div>
+    <div class="mb-2 d-flex justify-content-center">
+      <%= image_tag photo.image, size: "680x450", style: "object-fit: contain;" %>
+    </div>
+    <div class="mb-1 d-flex align-items-center">
+      <%= link_to member_path(member), class: "text-dark text-decoration-none" do %>
+        <%= image_tag member.get_profile_image, size: "50x50", class: "mr-3 member-icon" %>
+        <%= member.nickname %>
+      <% end %>
+      <div class="ml-auto mr-2">
+        <p>
+          <span id="favorite_btn"><%= render 'public/favorites/btn', photo: photo %></span>
+          <span class="ml-3">
+            <%= link_to photo_path(photo), class: "text-dark text-decoration-none" do %>
+              <i class="fa-regular fa-comment lead"></i><%= photo.photo_comments.count %>
+            <% end %>
+          </span>
+        </p>
+        <p class="d-flex align-items-center justify-content-end">
+          撮影地:
+          <%= link_to photo_maps_path(photo) do %>
+            <span class="ml-1 px-2 py-1 text-white btn btn-primary border" style="border-radius: 40px;">
+              <%= photo.address %>
+            </span>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="mx-3 mb-2 bg-light" style="height: 40px;">
+    <p class="p-2 text-center"><%= photo.body %></p>
+  </div>
+  <% if member == current_member %>
+    <div class="row text-center align-items-center">
+      <div class="col-4">
+        <%= link_to 'Edit', edit_photo_path(photo), class: "btn btn-outline-secondary" %>
+      </div>
+      <div class="col-4">
+        <%= link_to 'destroy', photo_path(photo), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-secondary" %>
+      </div>
+      <div class="col-4">
+        <% if member.best_photo_id == photo.id %>
+          <%= link_to photo_best_photo_path(photo), method: :post, class: "text-warning" do %>
+            <span class="lead">★</span> お気に入り
+          <% end %>
+        <% else %>
+          <%= link_to photo_best_photo_path(photo), method: :post, class: "text-dark" do %>
+            <span class="lead">☆</span> お気に入りに登録
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

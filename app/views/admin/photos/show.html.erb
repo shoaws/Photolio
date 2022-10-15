@@ -12,8 +12,8 @@
             <%= @member.last_name %><%= @member.first_name %>さん
           <% end %>
           <div class="ml-auto mr-2">
-            <p>いいね数:<%= @photo.favorites.count %></p>
-            <p class="d-flex align-items-center">
+            <p>いいね数:<%= @photo.favorites.count %><span class="ml-2">コメント数:<%= @photo.photo_comments.count %></span></p>
+            <p class="d-flex align-items-center justify-content-end">
               撮影地:
               <span class="ml-1 px-2 py-1 text-white bg-primary border" style="border-radius: 40px;">
                 <%= @photo.address %>
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    
+
     <!--コメント一覧-->
     <div class="col-4 mx-auto">
       <div class="mb-2 bg-light border" style="height: 50vh; overflow-y: scroll;">
@@ -39,12 +39,12 @@
           <%= render 'admin/photo_comments/admin_comments', photo: @photo, comments: @comments %>
         </div>
       </div>
-      
+
       <!--地図表示-->
       <div id="map" style="height: 30vh;"></div>
-      
+
     </div>
-    
+
   </div>
 </div>
 

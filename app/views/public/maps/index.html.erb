@@ -1,12 +1,31 @@
-<h2>gmap</h2>
+<div class="container" style="height: 80vh;">
+  <div class="row">
 
-<!-- 地名入力用のinputを追加 -->
-<input id="address" type="textbox" value="<%= @photo.address %>">
+    <%= render 'public/photos/photo_info', photo: @photo, member: @member %>
 
-<!-- buttonをクリックしたらcodeAddressを実行　-->
-<input type="button" value="Encode" onclick="codeAddress()">
+    <div class="col-4">
+      
+      <div class="mb-1">
+        <!-- 地名入力用のinputを追加 -->
+        <input id="address" type="textbox" value="<%= @photo.address %>">
+        <!-- buttonをクリックしたらcodeAddressを実行　-->
+        <input type="button" value="表示" onclick="codeAddress()">
+      </div>
+      
+      <div id='map' style="height: 50vh;">
+      </div>
+      
+      <div class="mt-3 px-1 pb-3 bg-light">
+        <p>同じ撮影地の投稿</p>
+        <% @another_photos.each do |another_photo| %>
+          <%= link_to photo_path(another_photo) do %>
+            <%= image_tag another_photo.image, size: "100x100", class: "mt-2 ml-2", style: "object-fit: cover;" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
-<div id='map' style="height: 70vh;">
+  </div>
 </div>
 
 <script>
