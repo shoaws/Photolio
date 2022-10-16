@@ -1,4 +1,6 @@
 class Public::MembersController < ApplicationController
+  before_action :authenticate_member!
+
   def index
   end
 
@@ -27,7 +29,7 @@ class Public::MembersController < ApplicationController
     current_member.save
     redirect_to photo_path(photo)
   end
-  
+
   def unsubscribe
     @member = Member.find_by(id: current_member.id)
   end
@@ -44,4 +46,5 @@ class Public::MembersController < ApplicationController
   def member_params
     params.require(:member).permit(:last_name, :first_name, :nickname, :introduction, :phone_number, :is_deleted, :profile_image, :best_photo_id)
   end
+
 end

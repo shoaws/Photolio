@@ -33,7 +33,7 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(current_member)
     member_path(current_member)
   end
-  
+
   #ゲストサインイン
   def guest_sign_in
     member = Member.guest

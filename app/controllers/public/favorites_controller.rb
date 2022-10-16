@@ -1,4 +1,6 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_member!
+
   def create
     @photo = Photo.find(params[:photo_id])
     favorite = current_member.favorites.new(photo_id: @photo.id)
@@ -12,7 +14,7 @@ class Public::FavoritesController < ApplicationController
     favorite.destroy
     render 'btn_change'
   end
-  
+
   def index
     @member = Member.find(params[:member_id])
     @best_photo = Photo.find_by(id: @member.best_photo_id)

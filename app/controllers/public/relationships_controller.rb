@@ -1,4 +1,5 @@
 class Public::RelationshipsController < ApplicationController
+  before_action :authenticate_member!
 
   def create
     current_member.follow(params[:member_id])
@@ -20,7 +21,7 @@ class Public::RelationshipsController < ApplicationController
     @member = Member.find(params[:member_id])
     @members = @member.followers
   end
-  
+
   def search
     @members = Member.search(params[:keyword]).where.not(email: "guest@example.com").where.not(id: current_member.id)
     @member_keyword = params[:keyword]
@@ -31,5 +32,5 @@ class Public::RelationshipsController < ApplicationController
       render "followers"
     end
   end
-  
+
 end
