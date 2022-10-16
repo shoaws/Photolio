@@ -1,38 +1,38 @@
 <div class="container">
 
-  <h4><span class="py-2 px-4 bg-white">新規メンバー登録</span></h4>
+  <h4 class="text-center">新規メンバー登録</h4>
   <%= form_with model: @member, url: member_registration_path do |f| %>
     <div class="row mt-5 mx-auto justify-content-center" style="width: 70%;">
       <%= render "layouts/errors", obj: @member %>
       <table class="table table-borderless table-sm">
         <tr>
-          <td class="align-middle"><span>名前</span></td>
-          <td class="align-middle">(姓)</td>
-          <td><%= f.text_field :last_name, placeholder: "令和", class: "form-control" %></td>
-          <td class="align-middle">(名)</td>
+          <td class="align-middle">名前</td>
+          <td class="align-middle"><%= f.label :last_name, class: "my-auto" %></td>
+          <td class="align-middle"><%= f.text_field :last_name, placeholder: "令和", class: "form-control" %></td>
+          <td class="align-middle"><%= f.label :first_name, class: "my-auto" %></td>
           <td class="align-middle"><%= f.text_field :first_name, placeholder: "道子", class: "form-control" %></td>
         </tr>
 
         <tr>
-          <td class="align-middle"><span>ニックネーム</span></td>
+          <td class="align-middle"><%= f.label :nickname, class: "my-auto" %></td>
           <td></td>
-          <td><%= f.text_field :nickname, placeholder: "レイワ", style: "border-radius: 8px;", class: "form-control" %></td>
+          <td><%= f.text_field :nickname, placeholder: "10文字まで", style: "border-radius: 8px;", class: "form-control" %></td>
         </tr>
 
         <tr>
-          <td class="align-middle"><span>メールアドレス</span></td>
+          <td class="align-middle"><%= f.label :email, class: "my-auto" %></td>
           <td></td>
           <td><%= f.text_field :email, autocomplete: "email", placeholder: "sample@example.com", style: "border-radius: 8px;", class: "form-control" %></td>
         </tr>
 
         <tr>
-          <td class="align-middle"><span>ステータスメッセージ</span></td>
+          <td class="align-middle"><%= f.label :introduction, class: "my-auto" %></td>
           <td></td>
-          <td colspan="3"><%= f.text_field :introduction, size: "55x20", style: "border-radius: 8px;", class: "form-control" %></td>
+          <td colspan="3"><%= f.text_field :introduction, size: "55x20", style: "border-radius: 8px;", placeholder: "30文字まで", class: "form-control" %></td>
         </tr>
 
         <tr>
-          <td class="align-middle">電話番号(ハイフンなし)</td>
+          <td class="align-middle"><%= f.label :phone_number, class: "my-auto" %>(ハイフンなし)</td>
           <td></td>
           <td><%= f.text_field :phone_number, placeholder: "0000000000", style: "border-radius: 8px;", class: "form-control" %></td>
         </tr>
@@ -53,7 +53,7 @@
 
     <div class="row justify-content-center align-items-center">
       <div class="col-6">
-        <label class="col-4 mr-2">プロフィール画像</label>
+        <%= f.label :profile_image,class: "col-4 mr-2" %>
         <%= f.file_field :profile_image, accept: "image/*", onchange: "previewImage(this);" %>
       </div>
       <div class="col-2 text-center">

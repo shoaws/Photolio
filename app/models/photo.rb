@@ -2,6 +2,7 @@ class Photo < ApplicationRecord
 
   belongs_to :member
   has_many :favorites, dependent: :destroy
+  has_many :favorited_members, through: :favorites, source: :member
   has_many :photo_comments, dependent: :destroy
 
   has_one_attached :image
@@ -11,7 +12,7 @@ class Photo < ApplicationRecord
   after_validation :geocode, if: :address_changed?
   
   validates :image, presence: true
-  validates :body, length: {maximum: 20}
+  validates :body, length: {maximum: 50}
   validates :address, presence: true
 
   # いいねしているかどうか

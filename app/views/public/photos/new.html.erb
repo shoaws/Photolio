@@ -2,29 +2,40 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2>New Photo</h2>
-    <%= form_with model:@photo do |f| %>
-      <%= render 'layouts/errors', obj: @photo %>
-      <div class="my-4" style="height: 250px;">
+    <% if current_member.email == "guest@example.com" && current_member.photos.count > 2 %>
+      <p class="mt-5 pt-5 text-center font-weight-bold" style="height: 40vh">
+        メンバー登録をして</br>
+        もっとたくさんの写真を展示しましょう！
+      </p>
+    <% else %>
+      <%= form_with model:@photo do |f| %>
+        <%= render 'layouts/errors', obj: @photo %>
+        <div class="my-4" style="height: 250px;">
+          <div class="form-group">
+            <%= f.label :image %>
+            <%= f.file_field :image, accept: 'image/*', onchange: "previewImage(this);" %>
+          </div>
+          <div class="text-center">
+            <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width: 200px; height: 200px; object-fit: contain;"></img>
+          </div>
+        </div>
+       <div class="form-group">
+          <%= f.label :body %>
+          <%= f.text_area :body, placeholder: "50文字まで", class: "form-control" %>
+        </div>
         <div class="form-group">
-          <%= f.label :image %>
-          <%= f.file_field :image, accept: 'image/*', onchange: "previewImage(this);" %>
+          <%= f.label :address %>
+          <%= f.text_field :address, class: "form-control" %>
         </div>
-        <div class="text-center">
-          <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width: 200px; height: 200px; object-fit: contain;"></img>
+        <div class="text-center form-group">
+          <%= f.submit class: 'btn btn-secondary' %>
         </div>
-      </div>
-     <div class="form-group">
-        <%= f.label :body %>
-        <%= f.text_area :body, class: "form-control-file" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :address %>
-        <%= f.text_field :address, class: "form-control" %>
-      </div>
-      <div class="text-center form-group">
-        <%= f.submit class: 'btn btn-secondary' %>
-      </div>
+      <% end %>
     <% end %>
+    <div class="text-center">
+      <%= link_to '<My Photos', member_path(current_member) %> |
+      <%= link_to 'All Photos>', photos_path %>
+    </div>
   </div>
 </div>
 

@@ -6,6 +6,7 @@ class Member < ApplicationRecord
 
   has_many :photos, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_photos, through: :favorites, source: :photo
   has_many :photo_comments, dependent: :destroy
 
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -15,10 +16,10 @@ class Member < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   has_one_attached :profile_image
-  
+
   validates :last_name, presence: true
   validates :first_name, presence: true
-  validates :nickname, presence: true, length: {maximum: 6}
+  validates :nickname, presence: true, length: {maximum: 10}
   validates :introduction, length: {maximum: 30}
   validates :phone_number, presence: true
 
@@ -55,7 +56,7 @@ class Member < ApplicationRecord
   def following?(member)
     followings.include?(member)
   end
-  
+
   # メンバー検索
   def self.search(member_keyword)
     where(["nickname like?", "%#{member_keyword}%"])
