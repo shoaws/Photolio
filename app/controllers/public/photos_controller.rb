@@ -1,5 +1,6 @@
 class Public::PhotosController < ApplicationController
   before_action :authenticate_member!
+  before_action :correct_photo, only: [:edit, :update, :destroy]
 
   def new
     @photo = Photo.new
@@ -61,6 +62,13 @@ class Public::PhotosController < ApplicationController
 
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
+  end
+  
+  def correct_photo
+    photo = Photo.find(params[:id])
+    unless photo.member.id == current_member.id
+      redirect_to member_path(current_member)
+    end
   end
 
 end

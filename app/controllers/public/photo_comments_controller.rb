@@ -1,6 +1,7 @@
 class Public::PhotoCommentsController < ApplicationController
   before_action :authenticate_member!
 
+
   def create
     @photo = Photo.find(params[:photo_id])
     @comments = @photo.photo_comments.all.order(created_at: :desc)
@@ -26,4 +27,5 @@ class Public::PhotoCommentsController < ApplicationController
   def photo_comment_params
     params.require(:photo_comment).permit(:comment)
   end
+
 end

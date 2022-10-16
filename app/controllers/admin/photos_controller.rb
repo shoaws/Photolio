@@ -1,4 +1,6 @@
 class Admin::PhotosController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @photos = Photo.page(params[:page]).per(12)
   end

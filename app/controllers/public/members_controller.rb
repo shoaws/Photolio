@@ -1,5 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!
+  before_action :correct_member, only: [:edit, :update, :unsubscribe,:withdraw]
 
   def index
   end
@@ -12,6 +13,9 @@ class Public::MembersController < ApplicationController
 
   def edit
     @member = Member.find(params[:id])
+    if @member.email == "guest@example.com"
+      redirect_to member_path(current_member)
+    end
   end
 
   def update
@@ -45,6 +49,13 @@ class Public::MembersController < ApplicationController
 
   def member_params
     params.require(:member).permit(:last_name, :first_name, :nickname, :introduction, :phone_number, :is_deleted, :profile_image, :best_photo_id)
+  end
+  
+  def correct_member
+    member = Member.find(params[:id])
+    unless member == current_member
+      redirect_to member_path(current_member)
+    end
   end
 
 end
