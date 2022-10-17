@@ -2,9 +2,6 @@ class Public::MembersController < ApplicationController
   before_action :authenticate_member!
   before_action :correct_member, only: [:edit, :update, :unsubscribe,:withdraw]
 
-  def index
-  end
-
   def show
     @member = Member.find(params[:id])
     @photos = @member.photos.page(params[:page]).per(9)
@@ -50,7 +47,7 @@ class Public::MembersController < ApplicationController
   def member_params
     params.require(:member).permit(:last_name, :first_name, :nickname, :introduction, :phone_number, :is_deleted, :profile_image, :best_photo_id)
   end
-  
+
   def correct_member
     member = Member.find(params[:id])
     unless member == current_member

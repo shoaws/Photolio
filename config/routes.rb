@@ -23,25 +23,25 @@ Rails.application.routes.draw do
   patch 'members/withdraw' => 'public/members#withdraw', as: 'withdraw'
 
   scope module: :public do
-    resources :members, only: [:index, :show, :edit, :update] do
+    resources :members, only: [:show, :edit, :update] do
       get 'favorites' => 'favorites#index', as: 'favorites'
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
-    
+
     # 検索機能
     get 'relationships/followings/search' => 'relationships#search'
     get 'relationships/followers/search' => 'relationships#search'
     get 'photos/search' => 'photos#search'
-    
+
     resources :photos do
       resource :favorites, only: [:create, :destroy]
       resources :photo_comments, only: [:create, :destroy]
       resources :maps, only: [:index]
       post 'best_photo' => 'members#best_photo', as: 'best_photo'
     end
-    
+
     get 'homes/top'
     get '/homes/about' => 'homes#about', as: 'about'
   end
