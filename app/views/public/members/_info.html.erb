@@ -42,7 +42,7 @@
   <% if member.email != "guest@example.com" %>
     <% if member == current_member %>
       <%= link_to edit_member_path(member), class: "px-5 btn btn-secondary" do %>
-        <i class="fa-solid fa-user-pen"></i>
+        <i class="fas fa-user-plus"></i>
       <% end %>
     <% else %>
       <% if current_member.following?(member) %>

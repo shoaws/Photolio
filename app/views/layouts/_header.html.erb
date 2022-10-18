@@ -11,43 +11,43 @@
               <% if member_signed_in? %>
                 <li class="nav-item align-top">
                   <%= link_to member_path(current_member), class: "mr-3 btn btn-outline-info" do %>
-                   <i class="fa-solid fa-user"></i>My Photos
+                   <i class="fas fa-user"></i>My Photos
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to photos_path, class: "mr-3 btn btn-outline-info" do %>
-                    <i class="fa-solid fa-camera"></i> All Photos
+                    <i class="fas fa-camera"></i> All Photos
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to new_photo_path, class: "mr-3 btn btn-outline-info" do %>
-                    <i class="fa-solid fa-plus"></i> New Photo
+                    <i class="fas fa-plus"></i> New Photo
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to destroy_member_session_path, method: :delete, class: "btn btn-outline-info" do %>
-                    <i class="fa-solid fa-right-from-bracket"></i> Log out
+                    <i class="fas fa-sign-out-alt"></i> Log out
                   <% end %>
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item align-top">
                   <%= link_to admin_root_path, class: "mr-3 btn btn-outline-info" do %>
-                    <i class="fa-solid fa-user"></i> All Members
+                    <i class="fas fa-user"></i> All Members
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to admin_photos_path, class: "mr-3 btn btn-outline-info" do %>
-                    <i class="fa-solid fa-camera"></i> All Photos
+                    <i class="fas fa-camera"></i> All Photos
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to destroy_admin_session_path, method: :delete, class: "btn btn-outline-info" do %>
-                    <i class="fa-solid fa-right-from-bracket"></i> Log out
+                    <i class="fas fa-sign-out-alt"></i> Log out
                   <% end %>
                 </li>
               <% else %>
                 <%= link_to members_guest_sign_in_path, method: :post, "data-confirm" => "ゲストメンバーとしてログインします", class: "btn btn-outline-info" do %>
-                  <i class="fa-solid fa-right-to-bracket"></i> Guest Log in
+                  <i class="fas fa-sign-in-alt"></i> Guest Log in
                 <% end %>
               <% end %>
             </ul>
@@ -59,7 +59,7 @@
           <%= form_with url: photos_search_path, method: :get do |f| %>
             <%= f.text_field :keyword, value: @keyword, size: "28", placeholder: "地名やキーワードで写真を検索" %>
             <%= button_tag type: "submit", class: "btn btn-default" do %>
-              <i class="fa-solid fa-magnifying-glass"></i>
+              
             <% end %>
           <% end %>
         </div>
