@@ -17,7 +17,11 @@ class Public::RelationshipsController < ApplicationController
       redirect_to member_path(current_member)
     end
     @members = @member.followings
-    @random_members = Member.where.not(email: "guest@example.com").where.not(is_deleted: true).where.not(id: current_member.id).where.not(id: @members.ids).order("RANDOM()").limit(5)
+    if Rails.env.production?
+      @random_members = Member.where.not(email: "guest@example.com").where.not(is_deleted: true).where.not(id: current_member.id).where.not(id: @members.ids).order("RAND()").limit(5)
+    else
+      @random_members = Member.where.not(email: "guest@example.com").where.not(is_deleted: true).where.not(id: current_member.id).where.not(id: @members.ids).order("RANDOM()").limit(5)
+    end
   end
 
   def followers
