@@ -53,7 +53,7 @@
         <%= f.submit "更新", class: "btn btn-success mr-5 px-5" %>
       </div>
       <div>
-        <%= link_to "退会する", unsubscribe_path(@member.id), class: "btn btn-danger px-5" %>
+        <%= link_to "退会する", member_unsubscribe_path(@member), class: "btn btn-danger px-5" %>
       </div>
     </div>
   <% end %>

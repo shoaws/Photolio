@@ -1,6 +1,6 @@
 <div class="container" style="height: 80vh;">
+  <div class="text-danger"><%= flash[:alret] %></div>
   <div class="row">
-
     <div class="col-4 bg-white" style="height: 80vh;">
       <%= render 'public/members/info', member: @member, best_photo: @best_photo %>
     </div>

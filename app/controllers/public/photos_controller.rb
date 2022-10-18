@@ -24,6 +24,10 @@ class Public::PhotosController < ApplicationController
   def show
     @photo = Photo.find(params[:id])
     @member = @photo.member
+    if @member.is_deleted == true
+      flash[:alret] = "この投稿のメンバーは退会しています"
+      redirect_to member_path(current_member)
+    end
     @comment =PhotoComment.new
     @comments = @photo.photo_comments.all.order(created_at: :desc)
   end
@@ -35,7 +39,7 @@ class Public::PhotosController < ApplicationController
   def update
     @photo = Photo.find(params[:id])
     if @photo.update(photo_params)
-      redirect_to photo_path(photo)
+      redirect_to photo_path(@photo)
     else
       render :edit
     end
@@ -63,7 +67,7 @@ class Public::PhotosController < ApplicationController
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
   end
-  
+
   def correct_photo
     photo = Photo.find(params[:id])
     unless photo.member.id == current_member.id

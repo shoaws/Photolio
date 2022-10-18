@@ -1,5 +1,5 @@
 <table class="table table-hover" style="height: 80%;">
-  <% if members.blank? %>
+  <% unless members.exists? %>
     <td>メンバーはいません</td>
   <% else %>
     <% members.each do |member| %>

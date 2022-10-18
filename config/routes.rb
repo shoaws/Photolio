@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   }
 
   #退会機能
-  get 'members/unsubscribe' => 'public/members#unsubscribe', as: 'unsubscribe'
-  patch 'members/withdraw' => 'public/members#withdraw', as: 'withdraw'
+  # get 'members/unsubscribe' => 'public/members#unsubscribe', as: 'unsubscribe'
+  # patch 'members/withdraw' => 'public/members#withdraw', as: 'withdraw'
 
   scope module: :public do
     resources :members, only: [:show, :edit, :update] do
@@ -28,6 +28,8 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
+      get 'unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
+      patch 'withdraw' => 'members#withdraw', as: 'withdraw'
     end
 
     # 検索機能

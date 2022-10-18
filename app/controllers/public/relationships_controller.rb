@@ -17,7 +17,7 @@ class Public::RelationshipsController < ApplicationController
       redirect_to member_path(current_member)
     end
     @members = @member.followings
-    @random_members = Member.where.not(email: "guest@example.com").where.not(id: current_member.id).where.not(id: @members.ids).order("RANDOM()").limit(5)
+    @random_members = Member.where.not(email: "guest@example.com").where.not(is_deleted: true).where.not(id: current_member.id).where.not(id: @members.ids).order("RANDOM()").limit(5)
   end
 
   def followers
@@ -32,7 +32,7 @@ class Public::RelationshipsController < ApplicationController
     @members = Member.search(params[:keyword]).where.not(email: "guest@example.com").where.not(id: current_member.id)
     @member_keyword = params[:keyword]
     if request.referer.include?("followings")
-      @random_members = Member.where.not(email: "guest@example.com").where.not(id: current_member.id).where.not(id: @members.ids).order("RANDOM()").limit(5)
+      @random_members = Member.where.not(email: "guest@example.com").where.not(is_deleted: true).where.not(id: current_member.id).where.not(id: @members.ids).order("RANDOM()").limit(5)
       render "followings"
     else
       render "followers"
