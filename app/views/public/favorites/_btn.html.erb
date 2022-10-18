@@ -1,9 +1,9 @@
 <% if photo.favorited_by?(current_member) %>
     <%= link_to photo_favorites_path(photo), method: :delete, class: "text-dark text-decoration-none", remote: true do %>
-      <i class="fa-solid fa-heart text-danger lead"></i><%= photo.favorites.count %>
+      <i class="fas fa-heart text-danger lead"></i><%= photo.favorites.count %>
     <% end %>
 <% else %>
     <%= link_to photo_favorites_path(photo), method: :post, class: "text-dark text-decoration-none", remote: true do %>
-      <i class="fa-regular fa-heart lead"></i><%= photo.favorites.count %>
+      <i class="far fa-heart lead"></i><%= photo.favorites.count %>
     <% end %>
 <% end %>
