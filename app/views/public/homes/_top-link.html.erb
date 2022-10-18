@@ -12,14 +12,22 @@
     <div class="col-3">
       <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "font-weight-bold btn btn-outline-secondary" %>
     </div>
+    <% elsif admin_signed_in? %>
+    <div class="col-3">
+      <%= link_to "メンバー一覧", admin_root_path, class: "font-weight-bold btn btn-outline-secondary" %>
+    </div>
+    <div class="col-3">
+      <%= link_to "投稿一覧", admin_photos_path, class: "font-weight-bold btn btn-outline-secondary" %>
+    </div>
+    <div class="col-3">
+      <%= link_to "ログアウト", admin_photos_path, class: "font-weight-bold btn btn-outline-secondary" %>
+    </div>
     <% else %>
     <div class="col-3">
       <%= link_to "About", about_path, class: "font-weight-bold btn btn-outline-secondary" %>
     </div>
     <div class="col-3">
-      <%= link_to members_guest_sign_in_path, method: :post, "data-confirm" => "ゲストメンバーとしてログインします", class: "font-weight-bold btn btn-outline-secondary" do %>
-        写真展へ
-      <% end %>
+      <%= link_to "写真展へ" members_guest_sign_in_path, method: :post, "data-confirm" => "ゲストメンバーとしてログインします", class: "font-weight-bold btn btn-outline-secondary" %>
     </div>
     <div class="col-3">
       <%= link_to "新規登録", new_member_registration_path, class: "font-weight-bold btn btn-outline-secondary" %>
