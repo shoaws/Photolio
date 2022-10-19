@@ -1,6 +1,6 @@
 <div class="row mx-5 mb-3 center-block">
   <% photos.each do |photo| %>
-    <div class="col-3 mb-3 text-center">
+    <div class="col-3 mb-3 text-center photo-image">
       <% if member_signed_in? %>
         <%= link_to photo_path(photo) do %>
           <%=image_tag photo.image, size: "150x150", style: "object-fit: cover;" %>

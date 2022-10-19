@@ -64,7 +64,7 @@
   <div class="text-center">
     <% unless best_photo.blank? %>
       <%= link_to photo_path(best_photo) do %>
-        <%= image_tag best_photo.image, size: "200x200", style: "object-fit: contain" %>
+        <%= image_tag best_photo.image, size: "200x200", class: "photo-image", style: "object-fit: contain" %>
       <% end %>
     <% else %>
       <p class="mt-5">撮影中…</p>

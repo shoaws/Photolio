@@ -16,9 +16,9 @@
 }
 
 .top-link{
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255,255,255,0.8);
   position: absolute;
-  top: 80%;
+  top: 85%;
   left: 50%;
   transform: translate(-50%,-50%);
   border-radius: 10px;
@@ -31,5 +31,9 @@
 }
 
 body{
-  background-color: #dbffff;
+  background-color: #eaffff;
+}
+
+.photo-image:hover{
+  opacity: 0.7;
 }

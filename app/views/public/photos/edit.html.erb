@@ -22,12 +22,12 @@
         <%= f.text_field :address, class: "form-control" %>
       </div>
       <div class="text-center form-group">
-        <%= f.submit class: 'btn btn-secondary' %>
+        <%= f.submit class: 'btn btn-success' %>
       </div>
     <% end %>
     <div class="text-center">
-      <%= link_to '<My Photos', member_path(current_member) %> |
-      <%= link_to 'All Photos>', photos_path %>
+      <%= link_to '< My Photos', member_path(current_member), class: "mr-5 btn btn-secondary" %>
+      <%= link_to 'All Photos >', photos_path, class: "btn btn-secondary" %>
     </div>
   </div>
 </div>

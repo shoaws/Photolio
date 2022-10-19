@@ -31,14 +31,11 @@
     <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-4 offset-md-1">
-      <h5 class="text-center">メンバー登録がお済みでない方</h5>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-log-4 offset-md-3">
-      <%= link_to "こちら", new_member_registration_path %>　から新規登録を行ってください。
-    </div>
+  <div class="text-right">
+    <p>
+      登録がまだの方は
+      <%= link_to "こちら", new_member_registration_path, class: "lead" %>
+      から新規登録を行ってください。
+    </p>
   </div>
 </div>

@@ -3,12 +3,13 @@ class Admin::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    @photos = @member.photos.page(params[:page]).per(9)
   end
 
   def edit
     @member = Member.find(params[:id])
   end
-  
+
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
@@ -17,11 +18,11 @@ class Admin::MembersController < ApplicationController
       render :edit
     end
   end
-  
+
   private
-  
+
   def member_params
     params.require(:member).permit(:last_name, :first_name, :nickname, :introduction, :phone_number, :is_deleted, :profile_image, :best_photo_id)
   end
-  
+
 end

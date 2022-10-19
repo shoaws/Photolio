@@ -10,7 +10,7 @@
           <td class="align-middle"><%= f.label :last_name, class: "my-auto" %></td>
           <td class="align-middle"><%= f.text_field :last_name, placeholder: "令和", class: "form-control" %></td>
           <td class="align-middle"><%= f.label :first_name, class: "my-auto" %></td>
-          <td class="align-middle"><%= f.text_field :first_name, placeholder: "道子", class: "form-control" %></td>
+          <td class="align-middle"><%= f.text_field :first_name, placeholder: "太郎", class: "form-control" %></td>
         </tr>
 
         <tr>
@@ -68,7 +68,7 @@
 
   <div class="text-right">
     <p>
-      会員の方は<%= link_to "こちら", new_session_path(resource_name) %> からログインしてください。
+      登録済みの方は<%= link_to "こちら", new_session_path(resource_name), class: "lead" %> からログインしてください。
     </p>
   </div>
 </div>

@@ -20,7 +20,7 @@
       <%= link_to "投稿一覧", admin_photos_path, class: "font-weight-bold btn btn-outline-secondary" %>
     </div>
     <div class="col-4">
-      <%= link_to "ログアウト", admin_photos_path, class: "font-weight-bold btn btn-outline-secondary" %>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "font-weight-bold btn btn-outline-secondary" %>
     </div>
     <% else %>
     <div class="col-3">

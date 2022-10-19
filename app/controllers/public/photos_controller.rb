@@ -17,7 +17,8 @@ class Public::PhotosController < ApplicationController
   end
 
   def index
-    photos = Photo.includes(:favorited_members).sort {|a,b| b.favorited_members.size <=> a.favorited_members.size}
+    member = Member.where(is_deleted: false)
+    photos = Photo.where(member_id: member.ids).includes(:favorited_members).sort {|a,b| b.favorited_members.size <=> a.favorited_members.size}
     @photos = Kaminari.paginate_array(photos).page(params[:page]).per(12)
   end
 
