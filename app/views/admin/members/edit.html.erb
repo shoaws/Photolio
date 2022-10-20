@@ -50,10 +50,10 @@
 
     <div class="row my-3 d-flex justify-content-center">
       <div class="mr-4 lead">
-        <%= f.radio_button :is_deleted, :false %> 有効
+        <%= f.radio_button :is_deleted, :false %> <span class="text-success">有効</span>
       </div>
       <div class="lead">
-        <%= f.radio_button :is_deleted, :true %> 退会
+        <%= f.radio_button :is_deleted, :true %> <span class="text-secondary">退会</span>
       </div>
     </div>
     <div class="text-center my-5">

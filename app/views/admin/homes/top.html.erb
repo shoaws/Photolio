@@ -4,9 +4,10 @@
     <table class="table col-8">
       <thead>
         <tr>
-          <th style="width: 60px;">Icon</th>
-          <th>Name</th>
-          <th>Nicname</th>
+          <th style="width: 60px;"></th>
+          <th>名前</th>
+          <th>ニックネーム</th>
+          <td>ステータス</td>
           <th style="width: 60px;">Link</th>
         </tr>
       </thead>
@@ -18,6 +19,17 @@
             </td>
             <td><%= member.last_name %> <%=member.first_name %></td>
             <td><%= member.nickname %></td>
+            <td>
+              <% if member.is_deleted == false %>
+                <span class="text-success font-weight-bold">
+                  有効
+                </span>
+              <% else %>
+                <span class="text-secondary">
+                  退会
+                </span>
+              <% end %>
+            </td>
             <td><%= link_to "Show>", admin_member_path(member) %></td>
           </tr>
         <% end %>
