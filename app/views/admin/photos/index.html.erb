@@ -1,8 +1,12 @@
 <div class="container">
   <div class="mb-4 text-center">
-    <h3>All Photos</h3>
+    <% if @keyword.nil? %>
+      <h3>All Photos</h3>
+    <% else %>
+      <h3>「<%= @keyword %>」Photos :<%= @search_photos.count %>件</h3>
+    <% end %>
   </div>
-  
+
   <%= render 'public/photos/index', photos: @photos %>
-  
+
 </div>

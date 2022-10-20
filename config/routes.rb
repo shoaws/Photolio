@@ -18,10 +18,6 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions'
   }
 
-  #退会機能
-  # get 'members/unsubscribe' => 'public/members#unsubscribe', as: 'unsubscribe'
-  # patch 'members/withdraw' => 'public/members#withdraw', as: 'withdraw'
-
   scope module: :public do
     resources :members, only: [:show, :edit, :update] do
       get 'favorites' => 'favorites#index', as: 'favorites'
@@ -50,6 +46,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :members, only: [:index, :show, :edit, :update, :destroy]
+
+    #検索機能
+    get 'homes/search' => 'homes#search'
+    get 'photos/search' => 'photos#search'
+
     resources :photos, only: [:index, :show, :destroy] do
       resources :photo_comments, only: [:destroy]
     end

@@ -61,4 +61,8 @@ class Member < ApplicationRecord
   def self.search(member_keyword)
     where(["nickname like?", "%#{member_keyword}%"])
   end
+
+  def self.admin_search(member_keyword)
+    where(["last_name like? OR first_name like? OR nickname like? OR phone_number like? OR email like?", "%#{member_keyword}%", "%#{member_keyword}%", "%#{member_keyword}%", "%#{member_keyword}%", "%#{member_keyword}%"])
+  end
 end

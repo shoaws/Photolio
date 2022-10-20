@@ -18,4 +18,11 @@ class Admin::PhotosController < ApplicationController
     redirect_to admin_member_path(member)
   end
   
+  def search
+    @search_photos = Photo.search(params[:keyword])
+    @photos = @search_photos.page(params[:page]).per(12)
+    @keyword = params[:keyword]
+    render "index"
+  end
+  
 end
