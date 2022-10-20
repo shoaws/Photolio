@@ -1,14 +1,18 @@
-![Uploading スクリーンショット 2022-10-20 18.06.09.png…]()
+<img width="1440" alt="スクリーンショット 2022-10-20 18 06 09" src="https://user-images.githubusercontent.com/108819031/196928302-29a30f7c-df64-4148-b688-8fc6cf503dc8.png">
+
+
 # アプリ名
 Photolio
 
 
 ## サイト概要
 **目的**
+
 自分が撮影した写真を記録・共有し、  
 その写真や撮影地を通して他のユーザーと交流することを目的としている。
 
 **機能**
+
 *画像を投稿*
 - 投稿時に撮影地を入力し、その情報をもとにマップにマーカーを立てて記録できる。
 - 自分の投稿の一つをお気に入り登録できる
@@ -49,7 +53,7 @@ Photolio
 
 
 ## 設計書
-
+https://docs.google.com/spreadsheets/d/1OWI0RFyNmU5rGA1EXaXAROilWWXLzpqMBsijfqPidms/edit?usp=sharing
 
 
 ## 開発環境
