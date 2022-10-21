@@ -39,17 +39,18 @@ geocoderを用意
 */
 let map;
 let geocoder;
+let photoLatLng
 
 function initMap(){
   // geocoderを初期化
   geocoder = new google.maps.Geocoder()
 
-  const photoLatLng = {lat: <%= @photo.latitude %>, lng: <%= @photo.longitude %>};
+  photoLatLng = {lat: <%= @photo.latitude %>, lng: <%= @photo.longitude %>};
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: photoLatLng
   });
-  const marker = new google.maps.Marker({
+  const photo_marker = new google.maps.Marker({
     position: photoLatLng,
     map: map
   });
@@ -70,13 +71,18 @@ function codeAddress(){
       map.setCenter(results[0].geometry.location);
 
 　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-      var marker = new google.maps.Marker({
+      const marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location
       });
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
+  });
+  photoLatLng = {lat: <%= @photo.latitude %>, lng: <%= @photo.longitude %>};
+  const photo_marker = new google.maps.Marker({
+    position: photoLatLng,
+    map: map
   });
 }
 </script>
