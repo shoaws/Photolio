@@ -1,18 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 text-center mt-5 pt-5 mb-5">
-      <h5 class="pb-5 font-weight-bold">本当に退会しますか？</h5>
+      <h1 class="pb-5 font-weight-bold">本当に退会しますか？</h1>
       <h5 class="pb-3">
-        退会すると、メンバー登録情報や<br>
-        これまで投稿した写真が閲覧できなくなります。<br>
+        退会すると、メンバー登録情報や</br>
+        これまで投稿した写真が閲覧できなくなります。</br>
         退会する場合は、「退会する」をクリックしてください。
     　</h5>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12 text-center">
-    　<%= link_to "退会しない", member_path(@member), class: "btn btn-primary" %>
-    　<%= link_to "退会する", member_withdraw_path, method: :patch, class: "btn btn-danger" %>
+    　<%= link_to "退会しない", member_path(@member), class: "btn btn-lg btn-primary" %>
+    　<%= link_to "退会する", member_withdraw_path, method: :patch, class: "ml-5 btn btn-lg btn-danger" %>
     </div>
   </div>
 </div>
