@@ -51,6 +51,10 @@
               <% end %>
             </td>
           </tr>
+          <tr>
+            <th>最終更新日時</th>
+            <td><%= @member.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+          </tr>
         </table>
       </div>
       <div class="col-9 mx-auto">
