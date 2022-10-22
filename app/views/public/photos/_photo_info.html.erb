@@ -18,10 +18,16 @@
         </p>
         <p class="d-flex align-items-center justify-content-end">
           撮影地:
-          <%= link_to photo_maps_path(photo) do %>
-            <span class="ml-1 px-2 py-1 text-white btn btn-primary border" style="border-radius: 40px;">
-              <%= photo.address %>
+          <% if @photo.address.empty? %>
+            <span class="ml-1 px-2 py-1 text-white bg-secondary border" style="border-radius: 40px;">
+              登録なし
             </span>
+          <% else %>
+            <%= link_to photo_maps_path(photo) do %>
+              <span class="ml-1 px-2 py-1 text-white btn btn-primary border" style="border-radius: 40px;">
+                <%= photo.address %>
+              </span>
+            <% end %>
           <% end %>
         </p>
       </div>

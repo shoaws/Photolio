@@ -15,9 +15,15 @@
             <p>いいね数:<%= @photo.favorites.count %><span class="ml-2">コメント数:<%= @photo.photo_comments.count %></span></p>
             <p class="d-flex align-items-center justify-content-end">
               撮影地:
-              <span class="ml-1 px-2 py-1 text-white bg-primary border" style="border-radius: 40px;">
-                <%= @photo.address %>
-              </span>
+              <% if @photo.address.empty? %>
+                <span class="ml-1 px-2 py-1 text-white bg-secondary border" style="border-radius: 40px;">
+                  登録なし
+                </span>
+              <% else %>
+                <span class="ml-1 px-2 py-1 text-white bg-primary border" style="border-radius: 40px;">
+                  <%= @photo.address %>
+                </span>
+              <% end %>
             </p>
           </div>
         </div>
@@ -39,10 +45,10 @@
           <%= render 'admin/photo_comments/admin_comments', photo: @photo, comments: @comments %>
         </div>
       </div>
-
-      <!--地図表示-->
-      <div id="map" style="height: 30vh;"></div>
-
+      <% unless @photo.address.empty? %>
+        <!--地図表示-->
+        <div id="map" style="height: 30vh;"></div>
+      <% end %>
     </div>
 
   </div>
