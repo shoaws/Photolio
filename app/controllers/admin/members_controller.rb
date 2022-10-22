@@ -3,7 +3,7 @@ class Admin::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @photos = @member.photos.page(params[:page]).per(9)
+    @photos = @member.photos.order(created_at: :desc).page(params[:page]).per(9)
   end
 
   def edit

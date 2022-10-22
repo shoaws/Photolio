@@ -8,7 +8,7 @@ class Public::MembersController < ApplicationController
       flash[:alret] = "このメンバーは退会しています"
       redirect_to member_path(current_member)
     end
-    @photos = @member.photos.page(params[:page]).per(9)
+    @photos = @member.photos.order(created_at: :desc).page(params[:page]).per(9)
     @best_photo = Photo.find_by(id: @member.best_photo_id)
   end
 
