@@ -60,7 +60,11 @@
       <%= f.submit "更新", class: "btn btn-success font-weight-bold", style: "padding: 10px 70px;" %>
     </div>
   <% end %>
-
+  
+  <div class="d-flex justify-content-center">
+    <%= link_to 'このメンバーを削除', admin_member_path, method: :delete, "data-confirm" => "このメンバーを削除しますか？", class: "btn btn-danger" %>
+  </div>
+  
 </div>
 
 <%= render 'layouts/previewimage' %>

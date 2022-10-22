@@ -18,6 +18,11 @@ class Admin::MembersController < ApplicationController
       render :edit
     end
   end
+  
+  def destroy
+    Member.find(params[:id]).destroy
+    redirect_to admin_root_path
+  end
 
   private
 
