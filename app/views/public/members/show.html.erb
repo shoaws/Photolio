@@ -5,10 +5,9 @@
       <%= render 'public/members/info', member: @member, best_photo: @best_photo %>
     </div>
 
-    <div class="col-7 ml-5">
-      <h3 class="ml-3">My Photos</h3>
-      <div class="ml-1" style="height: 68vh;">
-        <div class="d-flex flex-wrap">
+    <div class="col-7">
+      <div style="height: 70vh;">
+        <div class="ml-5 d-flex flex-wrap">
           <% @photos.each do |photo| %>
             <div class="m-1 photo-image">
               <%= link_to photo_path(photo) do %>
