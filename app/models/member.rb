@@ -59,7 +59,7 @@ class Member < ApplicationRecord
 
   # メンバー検索
   def self.search(member_keyword)
-    where(["nickname like?", "%#{member_keyword}%"])
+    where(["nickname like? OR email like?", "%#{member_keyword}%", "%#{member_keyword}%"])
   end
 
   def self.admin_search(member_keyword)
