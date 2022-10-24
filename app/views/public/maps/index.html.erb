@@ -19,7 +19,7 @@
         <p>同じ撮影地の投稿</p>
         <% if @another_photos.exists? %>
           <% @another_photos.each do |another_photo| %>
-            <%= link_to photo_path(another_photo) do %>
+            <%= link_to photo_path(another_photo), class: "text-decoration-none" do %>
               <%= image_tag another_photo.image, size: "100x100", class: "mt-2 ml-2 photo-image", style: "object-fit: cover;" %>
             <% end %>
           <% end %>
