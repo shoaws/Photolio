@@ -12,7 +12,7 @@
           <% @photos.each do |photo| %>
             <div class="mx-3 my-1">
               <%= link_to photo_path(photo) do %>
-                <%= image_tag photo.image, size: "150x150", style: "object-fit: cover;" %>
+                <%= image_tag photo.image, size: "150x150", class: "photo-image", style: "object-fit: cover;" %>
               <% end %>
             </div>
           <% end %>
