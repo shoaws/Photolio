@@ -42,7 +42,7 @@
         <%= link_to 'Edit', edit_photo_path(photo), class: "btn btn-outline-secondary" %>
       </div>
       <div class="col-4">
-        <%= link_to 'destroy', photo_path(photo), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-secondary" %>
+        <%= link_to 'destroy', photo_path(photo), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
       </div>
       <div class="col-4">
         <% if member.best_photo_id == photo.id %>
