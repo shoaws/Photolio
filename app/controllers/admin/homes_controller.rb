@@ -6,9 +6,14 @@ class Admin::HomesController < ApplicationController
   end
 
   def search
-    @search_members = Member.admin_search(params[:keyword])
+    @search_members = Member.admin_search(params[:keyword]).where(is_deleted: params[:is_deleted_search])
     @members = @search_members.page(params[:page]).per(10)
     @member_keyword = params[:keyword]
+    if params[:is_deleted_search] == 'false'
+      @is_deleted_search = "有効"
+    else
+      @is_deleted_search = "退会"
+    end
     render "top"
   end
 end

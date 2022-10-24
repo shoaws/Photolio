@@ -3,12 +3,13 @@
     <% if @member_keyword.nil? %>
       <h4>メンバー一覧</h4>
     <% else %>
-      <h4>メンバー検索「<%= @member_keyword %>」: <%= @members.count %>件</h4>
+      <h4><%= @is_deleted_search %>メンバー検索「<%= @member_keyword %>」: <%= @search_members.count %>件</h4>
     <% end %>
 
     <div class="ml-3 d-flex">
       <%= form_with url: admin_homes_search_path, method: :get do |f| %>
         <%= f.text_field :keyword, value: @member_keyword, size: "28", placeholder: "メンバーを検索" %>
+        <%= f.select :is_deleted_search, [["有効", false], ["退会", true]], include_blank: false %>
         <%= button_tag type: "submit", class: "btn btn-default" do %>
           <i class="fas fa-search"></i>
         <% end %>
