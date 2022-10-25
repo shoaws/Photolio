@@ -12,7 +12,7 @@
         <%= render 'layouts/errors', obj: @photo %>
         <div class="my-4" style="height: 50vh;">
           <div class="form-group">
-            <%= f.label :image %>
+            <%= f.label :image, class: "lead" %>
             <%= f.file_field :image, accept: 'image/*', onchange: "previewImage(this);" %>
           </div>
           <div class="text-center">

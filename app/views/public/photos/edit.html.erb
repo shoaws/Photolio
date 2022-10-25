@@ -6,7 +6,7 @@
       <%= render 'layouts/errors', obj: @photo %>
       <div class="my-4" style="height: 50vh;">
         <div class="form-group">
-          <%= f.label :image %>
+          <%= f.label :image, class: "lead" %>
           <%= f.file_field :image, accept: 'image/*', onchange: "previewImage(this);" %>
         </div>
         <div class="text-center">
@@ -16,11 +16,11 @@
     </div>
     <div class="col-6">
      <div class="form-group">
-        <%= f.label :body %>
+        <%= f.label :body, class: "lead" %>
         <%= f.text_area :body, placeholder: "50文字まで", class: "form-control", style: "height: 20vh;" %>
       </div>
       <div class="form-group">
-        <%= f.label :address %>
+        <%= f.label :address, class: "lead" %>
         <%= f.text_field :address, class: "form-control" %>
       </div>
       <div class="mt-5 text-center form-group">

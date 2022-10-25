@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h4><span class="py-2 px-4 bg-light">情報編集</span></h4>
+  <h4 class="font-weight-bold text-center">情報編集</h4>
   <%= form_with model: @member do |f| %>
     <div class="row mt-5 mx-auto justify-content-center" style="width: 70%;">
       <%= render "layouts/errors", obj: @member %>
@@ -49,14 +49,18 @@
       </div>
     </div>
     <div class="row my-3 d-flex justify-content-center">
-      <div class="">
+      <div>
         <%= f.submit "更新", class: "btn btn-success mr-5 px-5" %>
       </div>
       <div>
-        <%= link_to "退会する", member_unsubscribe_path(@member), class: "btn btn-danger px-5" %>
+        <%= link_to "退会する", member_unsubscribe_path(@member), class: "btn btn-outline-danger px-5" %>
       </div>
     </div>
   <% end %>
+
+  <div class="ml-5">
+    <%= link_to '< 戻る', member_path(@member), class: "btn btn-secondary" %>
+  </div>
 
 </div>
 
