@@ -9,7 +9,7 @@
       <td style="word-wrap: break-word;"><%= comment.comment %></td>
       <td style="width: 70px;">
         <% if comment.member == current_member %>
-          <%= link_to '削除', photo_photo_comment_path(photo, comment), method: :delete, class: "btn btn-outline-danger btn-sm", remote: true %>
+          <%= link_to '削除', photo_photo_comment_path(photo, comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "btn btn-outline-danger btn-sm", remote: true %>
         <% end %>
       </td>
     </tr>
