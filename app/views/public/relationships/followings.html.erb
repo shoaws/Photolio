@@ -1,12 +1,10 @@
 <div class="container">
-
   <div class="row d-flex justify-content-center">
     <% if @member_keyword.nil? %>
       <h4><%= @members.count %>フォロー中</h4>
     <% else %>
       <h4>メンバー検索「<%= @member_keyword %>」: <%= @members.count %>件</h4>
     <% end %>
-
     <% if @member == current_member %>
       <div class="ml-3 d-flex">
         <%= form_with url: relationships_followings_search_path, method: :get do |f| %>
@@ -18,11 +16,8 @@
       </div>
     <% end %>
   </div>
-
   <div class="col-7 mx-auto p-2 bg-white">
-
     <%= render 'index', members: @members %>
-
     <% if @member == current_member %>
       <div class="p-2 bg-light border">
         <h6>他のメンバーをフォローしましょう！</h6>
@@ -30,11 +25,9 @@
       </div>
     <% end %>
   </div>
-
   <% if request.path.include?("search") %>
     <div class="mt-3 text-center">
       <%= link_to 'フォロー一覧に戻る>', member_followings_path(current_member), class: "text-dark" %>
     </div>
   <% end %>
-
 </div>

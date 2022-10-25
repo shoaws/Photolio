@@ -1,24 +1,21 @@
 <div class="container" style="height: 80vh;">
   <div class="row">
-
     <%= render 'public/photos/photo_info', photo: @photo, member: @member %>
-
-      <div class="col-4 mx-auto">
-        <div id="photo_comments" class="mb-2 bg-light border" style="height: 60vh; overflow-y: scroll;">
-          <%= render 'public/photo_comments/comments', photo: @photo, comments: @comments %>
+    <div class="col-4 mx-auto">
+      <div id="photo_comments" class="mb-2 bg-light border" style="height: 60vh; overflow-y: scroll;">
+        <%= render 'public/photo_comments/comments', photo: @photo, comments: @comments %>
+      </div>
+      <div>
+        <div id="comment_form">
+          <%= render 'public/photo_comments/form', photo: @photo, comment: @comment %>
         </div>
-        <div>
-          <div id="comment_form">
-            <%= render 'public/photo_comments/form', photo: @photo, comment: @comment %>
-          </div>
-          <div id="comment_error">
-            <%= render 'layouts/errors', obj: @comment %>
-          </div>
-          <div class="mt-4 text-right">
-            <%= link_to 'All Photos>', photos_path, class: "btn btn-secondary" %>
-          </div>
+        <div id="comment_error">
+          <%= render 'layouts/errors', obj: @comment %>
+        </div>
+        <div class="mt-4 text-right">
+          <%= link_to 'All Photos>', photos_path, class: "btn btn-secondary" %>
         </div>
       </div>
-
+    </div>
   </div>
 </div>

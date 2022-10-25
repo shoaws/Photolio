@@ -18,9 +18,9 @@ class Public::RelationshipsController < ApplicationController
     end
     @members = @member.followings
     if Rails.env.production?
-      @random_members = Member.where.not(email: "guest@example.com").where.not(is_deleted: true).where.not(id: current_member.id).where.not(id: @members.ids).order("RAND()").limit(5)
+      @random_members = Member.active_member.where.not(id: current_member.id).where.not(id: @members.ids).order("RAND()").limit(5)
     else
-      @random_members = Member.where.not(email: "guest@example.com").where.not(is_deleted: true).where.not(id: current_member.id).where.not(id: @members.ids).order("RANDOM()").limit(5)
+      @random_members = Member.active_member.where.not(id: current_member.id).where.not(id: @members.ids).order("RANDOM()").limit(5)
     end
   end
 
@@ -33,10 +33,10 @@ class Public::RelationshipsController < ApplicationController
   end
 
   def search
-    @members = Member.search(params[:keyword]).where.not(email: "guest@example.com").where.not(id: current_member.id)
+    @members = Member.search(params[:keyword]).active_member.where.not(id: current_member.id)
     @member_keyword = params[:keyword]
     if request.referer.include?("followings")
-      @random_members = Member.where.not(email: "guest@example.com").where.not(is_deleted: true).where.not(id: current_member.id).where.not(id: @members.ids).order("RANDOM()").limit(5)
+      @random_members = Member.active_member.where.not(id: current_member.id).where.not(id: @members.ids).order("RANDOM()").limit(5)
       render "followings"
     else
       render "followers"

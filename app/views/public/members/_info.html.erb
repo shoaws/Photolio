@@ -2,7 +2,6 @@
   <%= image_tag member.get_profile_image, size: "80x80", class: "member-icon" %>
   <h4 class="ml-5"><%= member.nickname %></h4>
 </div>
-
 <div class="mb-3 d-flex align-items-center justify-content-center bg-light rounded" style="height: 80px;">
   <% if member.introduction.blank? %>
     <% if member == current_member %>
@@ -12,7 +11,6 @@
     <p class="text-break"><%= member.introduction %></p>
   <% end %>
 </div>
-
 <table cellpadding="5" class="mx-auto mb-3 font-weight-bold">
   <tr>
     <td>展示数:<%= member.photos.count %></td>
@@ -37,7 +35,6 @@
     <% end %>
   </tr>
 </table>
-
 <div class="text-center my-4">
   <% if member.email != "guest@example.com" %>
     <% if member == current_member %>
@@ -58,7 +55,6 @@
     </p>
   <% end %>
 </div>
-
 <div>
   <p class="mb-2"><span class="p-1 bg-light text-dark rounded"><i class="fas fa-star text-warning"></i></i>お気に入りの1枚</span></p>
   <div class="text-center">

@@ -11,25 +11,21 @@
           <td class="align-middle">(名)</td>
           <td class="align-middle"><%= f.text_field :first_name, placeholder: "道子", class: "form-control" %></td>
         </tr>
-
         <tr>
           <td class="align-middle"><span>ニックネーム</span></td>
           <td></td>
           <td><%= f.text_field :nickname, placeholder: "レイワ", style: "border-radius: 8px;", class: "form-control" %></td>
         </tr>
-
         <tr>
           <td class="align-middle"><span>メールアドレス</span></td>
           <td></td>
           <td><%= f.text_field :email, autocomplete: "email", placeholder: "sample@example.com", style: "border-radius: 8px;", class: "form-control" %></td>
         </tr>
-
         <tr>
           <td class="align-middle"><span>ステータスメッセージ</span></td>
           <td></td>
           <td colspan="3"><%= f.text_field :introduction, size: "55x20", style: "border-radius: 8px;", class: "form-control" %></td>
         </tr>
-
         <tr>
           <td class="align-middle">電話番号(ハイフンなし)</td>
           <td></td>
@@ -37,7 +33,6 @@
         </tr>
       </table>
     </div>
-
     <div class="row justify-content-center align-items-center">
       <div class="col-6">
         <label class="col-4 mr-2">プロフィール画像</label>
@@ -47,7 +42,6 @@
         <%= image_tag @member.get_profile_image, size: "80x80", id: "preview", class: "member-icon" %>
       </div>
     </div>
-
     <div class="row my-3 d-flex justify-content-center">
       <div class="mr-4 lead">
         <%= f.radio_button :is_deleted, :false %> <span class="text-success">有効</span>
@@ -60,11 +54,9 @@
       <%= f.submit "更新", class: "btn btn-success font-weight-bold", style: "padding: 10px 70px;" %>
     </div>
   <% end %>
-
   <div class="d-flex justify-content-center">
     <%= link_to 'このメンバーを削除', admin_member_path, method: :delete, "data-confirm" => "このメンバーを削除しますか？", class: "btn btn-outline-danger" %>
   </div>
-
 </div>
 
 <%= render 'layouts/previewimage' %>

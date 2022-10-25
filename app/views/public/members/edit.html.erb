@@ -1,5 +1,4 @@
 <div class="container">
-
   <h4 class="font-weight-bold text-center">情報編集</h4>
   <%= form_with model: @member do |f| %>
     <div class="row mt-5 mx-auto justify-content-center" style="width: 70%;">
@@ -12,25 +11,21 @@
           <td class="align-middle">(名)</td>
           <td class="align-middle"><%= f.text_field :first_name, placeholder: "道子", class: "form-control" %></td>
         </tr>
-
         <tr>
           <td class="align-middle"><span>ニックネーム</span></td>
           <td></td>
           <td><%= f.text_field :nickname, placeholder: "レイワ", style: "border-radius: 8px;", class: "form-control" %></td>
         </tr>
-
         <tr>
           <td class="align-middle"><span>メールアドレス</span></td>
           <td></td>
           <td><%= f.text_field :email, autocomplete: "email", placeholder: "sample@example.com", style: "border-radius: 8px;", class: "form-control" %></td>
         </tr>
-
         <tr>
           <td class="align-middle"><span>ステータスメッセージ</span></td>
           <td></td>
           <td colspan="3"><%= f.text_field :introduction, size: "55x20", style: "border-radius: 8px;", class: "form-control" %></td>
         </tr>
-
         <tr>
           <td class="align-middle">電話番号(ハイフンなし)</td>
           <td></td>
@@ -38,7 +33,6 @@
         </tr>
       </table>
     </div>
-
     <div class="row justify-content-center align-items-center">
       <div class="col-6">
         <label class="col-4 mr-2">プロフィール画像</label>
@@ -57,11 +51,9 @@
       </div>
     </div>
   <% end %>
-
   <div class="ml-5">
     <%= link_to '< 戻る', member_path(@member), class: "btn btn-secondary" %>
   </div>
-
 </div>
 
 <%= render 'layouts/previewimage' %>
