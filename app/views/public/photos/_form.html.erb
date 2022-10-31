@@ -1,0 +1,44 @@
+<div class="col-6">
+  <%= form_with model:photo do |f| %>
+  <%= render 'layouts/errors', obj: photo %>
+  <div class="my-4" style="height: 50vh;">
+    <div class="form-group">
+      <%= f.label :image, class: "lead" %>
+      <%= f.file_field :image, accept: 'image/*', onchange: "previewImage(this);" %>
+    </div>
+    <div class="text-center">
+      <% if request.path.include?("new") %>
+        <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width: 100%; height: 45vh; object-fit: contain;"></img>
+      <% else %>
+        <%= image_tag photo.image, id: "preview", style: "width: 100%; height: 45vh; object-fit: contain;" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="col-6">
+  <div class="form-group">
+    <%= f.label :body, class: "lead" %>
+    <%= f.text_area :body, placeholder: "50文字まで", class: "form-control", style: "height: 20vh;" %>
+  </div>
+  <div class="form-group">
+    <label>
+      <span class="lead">タグ</span>
+      <span class="text-secondary">
+        (現在のタグ:
+        <% photo.tags.each do |tag| %>
+          <%= tag.name %>,
+        <% end %>
+        )
+      </span>
+    </label>
+    <%= f.text_field :name, value: tag_list, class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :address, class: "lead" %>
+    <%= f.text_field :address, placeholder: "10文字まで", class: "form-control" %>
+  </div>
+  <div class="mt-5 text-center form-group">
+    <%= f.submit'展示する', class: 'btn btn-lg btn-success' %>
+  </div>
+  <% end %>
+</div>

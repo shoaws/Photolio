@@ -9,7 +9,9 @@ class Public::PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.member_id = current_member.id
+    @tag_list = params[:photo][:name].split(',')
     if @photo.save
+      @photo.save_tag(@tag_list)
       redirect_to photo_path(@photo)
     else
       render :new
@@ -20,6 +22,7 @@ class Public::PhotosController < ApplicationController
     member = Member.where(is_deleted: false)
     photos = Photo.where(member_id: member.ids).includes(:favorited_members).sort {|a,b| b.favorited_members.size <=> a.favorited_members.size}
     @photos = Kaminari.paginate_array(photos).page(params[:page]).per(12)
+    @tags = Tag.all
   end
 
   def show
@@ -39,7 +42,15 @@ class Public::PhotosController < ApplicationController
 
   def update
     @photo = Photo.find(params[:id])
+    @tag_list = params[:photo][:name].split(',')
     if @photo.update(photo_params)
+      # このphoto_idに紐づいていたタグを@old_tagsに代入
+      @old_tags=PhotoTag.where(photo_id: @photo.id)
+      # それらを取り出し、消す
+      @old_tags.each do |old_tag|
+        old_tag.delete
+      end
+      @photo.save_tag(@tag_list)
       redirect_to photo_path(@photo)
     else
       render :edit

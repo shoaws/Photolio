@@ -33,8 +33,14 @@
       </div>
     </div>
   </div>
-  <div class="mx-3 mb-2 bg-white" style="width: 45vw;">
-    <p class="p-2 text-center border" style="overflow-wrap: normal;"><%= photo.body %></p>
+  <div class="mx-3 p-2 mb-2 bg-white border" style="width: 45vw;">
+    <p class="text-center" style="overflow-wrap: normal;"><%= photo.body %></p>
+    <div class="p-1 bg-light">
+      Tags:
+      <% @photo.tags.each do |tag| %>
+        <%= tag.name %>,
+      <% end %>
+    </div>
   </div>
   <% if member == current_member %>
     <div class="row text-center align-items-center">
