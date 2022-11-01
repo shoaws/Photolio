@@ -9,8 +9,9 @@ class Public::PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.member_id = current_member.id
-    @tag_list = params[:photo][:name].split(',')
+    # @tag_list = params[:photo][:name].split(',')
     if @photo.save
+      @tag_list = Vision.get_image_data(@photo.image)
       @photo.save_tag(@tag_list)
       redirect_to photo_path(@photo)
     else
