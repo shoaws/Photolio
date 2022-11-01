@@ -13,6 +13,31 @@
           <%= render 'layouts/errors', obj: @comment %>
         </div>
       </div>
+      <% if @member == current_member %>
+        <div class="row mt-3 p-2 text-center bg-white border align-items-center">
+          <div class="col-4">
+            <%= link_to edit_photo_path(@photo), class: "btn btn-outline-secondary" do %>
+              <i class="fas fa-edit"></i> 編集
+            <% end %>
+          </div>
+          <div class="col-4">
+            <%= link_to photo_path(@photo), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" do %>
+              <i class="fas fa-times"></i> 削除
+            <% end %>
+          </div>
+          <div class="col-4">
+            <% if @member.best_photo_id == @photo.id %>
+              <%= link_to photo_best_photo_path(@photo), method: :post, class: "text-warning" do %>
+                <span class="lead">★</span>
+              <% end %>
+            <% else %>
+              <%= link_to photo_best_photo_path(@photo), method: :post, class: "text-dark" do %>
+                <span class="lead">☆</span>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

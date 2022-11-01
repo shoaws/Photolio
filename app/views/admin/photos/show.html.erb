@@ -34,20 +34,22 @@
           </div>
         </div>
       </div>
-      <div class="mx-3 mb-2 bg-white" style="height: 40px;">
-        <p class="p-2 text-center border" style="overflow-wrap: normal;"><%= @photo.body %></p>
-      </div>
-      <div class="row text-center align-items-center">
-        <div class="col-4">
-          <%= link_to admin_photo_path(@photo), method: :delete, "data-confirm" => "この投稿を削除します", class: "btn btn-outline-danger" do %>
-            <i class="fas fa-times"></i> 削除
+      <div class="mx-3 p-1 bg-white border" style="width: 47vw;">
+        <p class="text-center" style="overflow-wrap: normal;"><%= @photo.body %></p>
+        <div class="p-1 bg-light">
+          Tags:
+          <% @photo.tags.each do |tag| %>
+            <%= link_to admin_search_tag_path(tag_id: tag.id), class: "text-white btn btn-sm btn-primary", style: "border-radius: 40px;" do %>
+              <%= tag.name %>
+            <% end %>
+            ,
           <% end %>
         </div>
       </div>
     </div>
     <!--コメント一覧-->
     <div class="col-4 mx-auto">
-      <div class="mb-2 bg-light border" style="height: 50vh; overflow-y: scroll;">
+      <div class="mb-2 bg-light border" style="height: 40vh; overflow-y: scroll;">
         <div id="photo_comments">
           <%= render 'admin/photo_comments/admin_comments', photo: @photo, comments: @comments %>
         </div>
@@ -56,6 +58,13 @@
         <!--地図表示-->
         <div id="map" style="height: 30vh;"></div>
       <% end %>
+      <div class="mt-1 text-center align-items-center">
+        <div>
+          <%= link_to admin_photo_path(@photo), method: :delete, "data-confirm" => "この投稿を削除します", class: "btn btn-outline-danger" do %>
+            <i class="fas fa-times"></i> この投稿を削除
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

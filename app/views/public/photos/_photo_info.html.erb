@@ -33,38 +33,23 @@
       </div>
     </div>
   </div>
-  <div class="mx-3 p-2 mb-2 bg-white border" style="width: 45vw;">
+  <div class="mx-1 pt-1 px-1 bg-white border" style="width: 47vw;">
     <p class="text-center" style="overflow-wrap: normal;"><%= photo.body %></p>
-    <div class="p-1 bg-light">
-      Tags:
-      <% @photo.tags.each do |tag| %>
-        <%= tag.name %>,
-      <% end %>
+    <div class="row p-2 bg-light border">
+      <div class="col-6">
+        Tags:
+        <% photo.tags.each do |tag| %>
+          <%= link_to search_tag_path(tag_id: tag.id), class: "text-white btn btn-sm btn-primary", style: "border-radius: 40px;" do %>
+            <%= tag.name %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-6">
+        使用機材:
+        <% photo.cameras.each do |camera| %>
+          <%= camera.name %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <% if member == current_member %>
-    <div class="row text-center align-items-center">
-      <div class="col-4">
-        <%= link_to edit_photo_path(photo), class: "btn btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i> 編集
-        <% end %>
-      </div>
-      <div class="col-4">
-        <%= link_to photo_path(photo), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" do %>
-          <i class="fas fa-times"></i> 削除
-        <% end %>
-      </div>
-      <div class="col-4">
-        <% if member.best_photo_id == photo.id %>
-          <%= link_to photo_best_photo_path(photo), method: :post, class: "text-warning" do %>
-            <span class="lead">★</span> お気に入り
-          <% end %>
-        <% else %>
-          <%= link_to photo_best_photo_path(photo), method: :post, class: "text-dark" do %>
-            <span class="lead">☆</span> お気に入りに登録
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
 </div>

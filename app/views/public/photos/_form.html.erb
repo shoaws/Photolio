@@ -18,21 +18,38 @@
 <div class="col-6">
   <div class="form-group">
     <%= f.label :body, class: "lead" %>
-    <%= f.text_area :body, placeholder: "50文字まで", class: "form-control", style: "height: 20vh;" %>
+    <%= f.text_area :body, placeholder: "40文字まで", class: "form-control", style: "height: 20vh;" %>
   </div>
   <div class="form-group">
     <label>
-      <span class="lead">タグ</span>
-      <span class="text-secondary">
-        (現在のタグ:
-        <% photo.tags.each do |tag| %>
-          <%= tag.name %>,
-        <% end %>
-        )
-      </span>
+      <span class="lead">使用機材</span>
+      <% if request.path.include?("edit") %>
+        <span class="text-secondary">
+          (現在:
+          <% photo.cameras.each do |camera| %>
+            <%= camera.name %>,
+          <% end %>
+          )
+        </span>
+      <% end %>
     </label>
-    <%= f.text_field :name, value: tag_list, class: "form-control"%>
+    <%= f.text_field :camera_name, value: cameras, placeholder: "「,」で区切って入力", class: "form-control"%>
   </div>
+  <% if request.path.include?("edit") %>
+    <div class="form-group">
+      <label>
+        <span class="lead">タグ</span>
+        <span class="text-secondary">
+          (現在:
+          <% photo.tags.each do |tag| %>
+            <%= tag.name %>,
+          <% end %>
+          )
+        </span>
+      </label>
+      <%= f.text_field :tag_name, value: tag_list, class: "form-control"%>
+    </div>
+  <% end %>
   <div class="form-group">
     <%= f.label :address, class: "lead" %>
     <%= f.text_field :address, placeholder: "10文字まで", class: "form-control" %>

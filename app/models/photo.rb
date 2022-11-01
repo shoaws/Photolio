@@ -6,6 +6,8 @@ class Photo < ApplicationRecord
   has_many :photo_comments, dependent: :destroy
   has_many :photo_tags,dependent: :destroy
   has_many :tags,through: :photo_tags
+  has_many :photo_cameras, dependent: :destroy
+  has_many :cameras, through: :photo_cameras
 
   has_one_attached :image
 
@@ -14,7 +16,7 @@ class Photo < ApplicationRecord
   after_validation :geocode, if: :address_changed?
 
   validates :image, presence: true
-  validates :body, length: {maximum: 50}
+  validates :body, length: {maximum: 40}
   validates :address, length: {maximum: 10}
 
   # いいねしているかどうか
@@ -44,5 +46,22 @@ class Photo < ApplicationRecord
       self.tags << new_photo_tag
     end
   end
+
+  def save_camera(sent_cameras)
+    current_cameras = self.cameras.pluck(:name) unless self.cameras.nil?
+    old_cameras = current_cameras - sent_cameras
+    new_cameras = sent_cameras - current_cameras
+
+    old_cameras.each do |old_camera|
+      self.old_cameras.delete　Camera.find_by(name: old_camera)
+    end
+
+    new_cameras.each do |new_camera|
+      new_photo_camera = Camera.find_or_create_by(name: new_camera)
+      self.cameras << new_photo_camera
+    end
+
+  end
+
 
 end

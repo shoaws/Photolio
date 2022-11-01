@@ -13,6 +13,8 @@ class Public::PhotosController < ApplicationController
     if @photo.save
       @tag_list = Vision.get_image_data(@photo.image)
       @photo.save_tag(@tag_list)
+      @cameras = params[:photo][:camera_name].split(',')
+      @photo.save_camera(@cameras)
       redirect_to photo_path(@photo)
     else
       render :new
@@ -43,15 +45,24 @@ class Public::PhotosController < ApplicationController
 
   def update
     @photo = Photo.find(params[:id])
-    @tag_list = params[:photo][:name].split(',')
+    @tag_list = params[:photo][:tag_name].split(',')
+    @cameras = params[:photo][:camera_name].split(',')
     if @photo.update(photo_params)
+
       # このphoto_idに紐づいていたタグを@old_tagsに代入
-      @old_tags=PhotoTag.where(photo_id: @photo.id)
+      @old_tags = PhotoTag.where(photo_id: @photo.id)
       # それらを取り出し、消す
       @old_tags.each do |old_tag|
         old_tag.delete
       end
       @photo.save_tag(@tag_list)
+
+      @old_cameras = PhotoCamera.where(photo_id: @photo.id)
+      @old_cameras.each do |old_camera|
+        old_camera.delete
+      end
+      @photo.save_camera(@cameras)
+
       redirect_to photo_path(@photo)
     else
       render :edit
@@ -68,7 +79,16 @@ class Public::PhotosController < ApplicationController
     @search_photos = Photo.search(params[:keyword])
     @photos = @search_photos.page(params[:page]).per(12)
     @keyword = params[:keyword]
-    render "index"
+    render :index
+  end
+
+  def search_tag
+    @tags = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @keyword = @tag.name
+    @search_photos = @tag.photos
+    @photos = @search_photos.page(params[:page]).per(12)
+    render :index
   end
 
   private
