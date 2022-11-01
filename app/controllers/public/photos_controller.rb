@@ -91,6 +91,15 @@ class Public::PhotosController < ApplicationController
     render :index
   end
 
+  def search_camera
+    @cameras = Camera.all
+    @camera = Camera.find(params[:camera_id])
+    @keyword = @camera.name
+    @search_photos = @camera.photos
+    @photos = @search_photos.page(params[:page]).per(12)
+    render :index
+  end
+
   private
 
   def photo_params

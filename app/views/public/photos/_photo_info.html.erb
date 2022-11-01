@@ -47,7 +47,9 @@
       <div class="col-6">
         使用機材:
         <% photo.cameras.each do |camera| %>
-          <%= camera.name %>
+          <%= link_to search_camera_path(camera_id: camera.id), class: "text-white btn btn-sm btn-success", style: "border-radius: 40px;" do %>
+            <%= camera.name %>
+          <% end %>
         <% end %>
       </div>
     </div>

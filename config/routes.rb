@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     get 'relationships/followers/search' => 'relationships#search'
     get 'photos/search' => 'photos#search'
     get 'search_tag' => 'photos#search_tag'
+    get 'search_camera' => 'photos#search_camera'
 
     resources :photos do
       resource :favorites, only: [:create, :destroy]
@@ -52,6 +53,7 @@ Rails.application.routes.draw do
     get 'homes/search' => 'homes#search'
     get 'photos/search' => 'photos#search'
     get 'search_tag' => 'photos#search_tag'
+    get 'search_camera' => 'photos#search_camera'
 
     resources :photos, only: [:index, :show, :destroy] do
       resources :photo_comments, only: [:destroy]

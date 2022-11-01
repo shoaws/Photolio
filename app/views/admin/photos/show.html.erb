@@ -34,16 +34,25 @@
           </div>
         </div>
       </div>
-      <div class="mx-3 p-1 bg-white border" style="width: 47vw;">
+      <div class="mx-1 pt-1 px-1 bg-white border" style="width: 47vw;">
         <p class="text-center" style="overflow-wrap: normal;"><%= @photo.body %></p>
-        <div class="p-1 bg-light">
-          Tags:
-          <% @photo.tags.each do |tag| %>
-            <%= link_to admin_search_tag_path(tag_id: tag.id), class: "text-white btn btn-sm btn-primary", style: "border-radius: 40px;" do %>
-              <%= tag.name %>
+        <div class="row p-2 bg-light border">
+          <div class="col-6">
+            Tags:
+            <% @photo.tags.each do |tag| %>
+              <%= link_to admin_search_tag_path(tag_id: tag.id), class: "text-white btn btn-sm btn-primary", style: "border-radius: 40px;" do %>
+                <%= tag.name %>
+              <% end %>
             <% end %>
-            ,
-          <% end %>
+          </div>
+          <div class="col-6">
+            使用機材:
+            <% @photo.cameras.each do |camera| %>
+              <%= link_to admin_search_camera_path(camera_id: camera.id), class: "text-white btn btn-sm btn-success", style: "border-radius: 40px;" do %>
+                <%= camera.name %>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
