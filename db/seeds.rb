@@ -52,3 +52,53 @@ Photo.create!(
     {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-photo29.jpg"), filename:"sample-photo29.jpg"), body: '虎を撮影しました', address: '日本平動物園', member_id: members[4].id },
   ]
 )
+
+Camera.create!(
+  [
+    {name: 'α7IV'},
+    {name: 'NikonF60'},
+    {name: '24-70/2.8'},
+    {name: '50/1.4'},
+  ]
+)
+
+PhotoCamera.create!(
+  [
+    {photo_id: '10', camera_id: '1'},
+    {photo_id: '10', camera_id: '3'},
+    {photo_id: '9', camera_id: '2'},
+    {photo_id: '9', camera_id: '4'},
+    {photo_id: '16', camera_id: '2'},
+    {photo_id: '17', camera_id: '2'},
+    {photo_id: '18', camera_id: '2'},
+    {photo_id: '19', camera_id: '2'},
+    {photo_id: '20', camera_id: '2'},
+    {photo_id: '16', camera_id: '4'},
+    {photo_id: '17', camera_id: '4'},
+    {photo_id: '18', camera_id: '4'},
+    {photo_id: '19', camera_id: '4'},
+    {photo_id: '20', camera_id: '4'},
+  ]
+)
+
+Tag.create!(
+  [
+    {name: '秋'},
+    {name: '緑'},
+    {name: 'イルミネーション'},
+    {name: '冬'},
+  ]
+)
+
+PhotoTag.create!(
+  [
+    {photo_id: '10', tag_id: '1'},
+    {photo_id: '10', tag_id: '2'},
+    {photo_id: '9', tag_id: '3'},
+    {photo_id: '9', tag_id: '4'},
+    {photo_id: '19', tag_id: '1'},
+    {photo_id: '19', tag_id: '2'},
+    {photo_id: '16', tag_id: '4'},
+    {photo_id: '18', tag_id: '2'},
+  ]
+)
