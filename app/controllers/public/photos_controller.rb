@@ -9,12 +9,14 @@ class Public::PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.member_id = current_member.id
-    # @tag_list = params[:photo][:name].split(',')
     if @photo.save
+      #画像を認識してタグを作成
       @tag_list = Vision.get_image_data(@photo.image)
       @photo.save_tag(@tag_list)
+
       @cameras = params[:photo][:camera_name].split(',')
       @photo.save_camera(@cameras)
+
       redirect_to photo_path(@photo)
     else
       render :new
@@ -45,19 +47,21 @@ class Public::PhotosController < ApplicationController
 
   def update
     @photo = Photo.find(params[:id])
-    @tag_list = params[:photo][:tag_name].split(',')
     @cameras = params[:photo][:camera_name].split(',')
     if @photo.update(photo_params)
-
-      # このphoto_idに紐づいていたタグを@old_tagsに代入
+      #画像を認識してタグを作成
+      @tag_list = Vision.get_image_data(@photo.image)
+      # このpost_idに紐づいていたタグを@oldに入れる
       @old_tags = PhotoTag.where(photo_id: @photo.id)
       # それらを取り出し、消す
-      @old_tags.each do |old_tag|
-        old_tag.delete
+      @old_tags.each do |tag|
+      tag.delete
       end
       @photo.save_tag(@tag_list)
 
+      # このphotoに紐づいていた機材を@old_camerasに代入
       @old_cameras = PhotoCamera.where(photo_id: @photo.id)
+      # それらを取り出し、消す
       @old_cameras.each do |old_camera|
         old_camera.delete
       end
