@@ -7,12 +7,7 @@
     <% end %>
     <% if @member == current_member %>
       <div class="ml-3 d-flex">
-        <%= form_with url: relationships_followers_search_path, method: :get do |f| %>
-          <%= f.text_field :keyword, value: @member_keyword, size: "35", placeholder: "ニックネームかアドレスでメンバーを検索" %>
-          <%= button_tag type: "submit", class: "btn btn-default" do %>
-            <i class="fas fa-search"></i>
-          <% end %>
-        <% end %>
+        <%= render 'public/relationships/form', member_keyword: @member_keyword %>
       </div>
     <% end %>
   </div>
