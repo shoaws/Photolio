@@ -36,7 +36,6 @@ class Public::RelationshipsController < ApplicationController
     @members = Member.search(params[:keyword]).active_member.where.not(id: current_member.id)
     @member_keyword = params[:keyword]
     if request.referer.include?("followings")
-      @random_members = Member.active_member.where.not(id: current_member.id).where.not(id: @members.ids).order("RANDOM()").limit(5)
       render "followings"
     else
       render "followers"

@@ -5,7 +5,7 @@
     <% else %>
       <h4>メンバー検索「<%= @member_keyword %>」: <%= @members.count %>件</h4>
     <% end %>
-    <% if @member == current_member %>
+    <% if @member == current_member || request.path.include?("search") %>
       <div class="ml-3 d-flex">
         <%= render 'public/relationships/form', member_keyword: @member_keyword %>
       </div>
