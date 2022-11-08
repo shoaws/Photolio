@@ -20,19 +20,8 @@
       <% end %>
     </td>
   </tr>
-  <tr>
-    <% if member.email != "guest@example.com" %>
-      <td>
-        <%= link_to member_followings_path(member), class: "text-dark" do %>
-          フォロー:<%= member.followings.count %>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to member_followers_path(member), class: "text-dark" do %>
-          フォロワー:<%= member.followers.count %>
-        <% end %>
-      </td>
-    <% end %>
+  <tr id="follow_count">
+      <%= render 'public/relationships/follow_count', member: member %>
   </tr>
 </table>
 <div class="text-center my-4">
@@ -42,11 +31,9 @@
         <i class="fas fa-user-plus"></i>
       <% end %>
     <% else %>
-      <% if current_member.following?(member) %>
-        <%= link_to "フォロー中", member_relationships_path(member.id), method: :delete, class: "btn btn-outline-primary" %>
-      <% else %>
-        <%= link_to "フォローする", member_relationships_path(member.id), method: :post, class: "btn btn-primary" %>
-      <% end %>
+      <div id="follow_btn">
+        <%= render 'public/relationships/follow_btn', member: member %>
+      </div>
     <% end %>
   <% else %>
     <p>
