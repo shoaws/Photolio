@@ -71,7 +71,7 @@ https://drive.google.com/file/d/1qd_pzIlT1oSly3L0N00OkITTstmLC74l/view?usp=shari
 - IDE：Cloud9
 
 ## 使用素材
-- GoogleMap API
+- Google Maps API
 https://developers.google.com/maps?hl=ja
 - GoogleVision API
 https://cloud.google.com/vision/?utm_source=google&utm_medium=cpc&utm_campaign=japac-JP-all-ja-dr-skws-all-super-trial-e-dr-1009882&utm_content=text-ad-none-none-DEV_c-CRE_540835491815-ADGP_Hybrid%20%7C%20SKWS%20-%20EXA%20%7C%20Txt%20~%20AI%20%26%20ML%20~%20Vision%20AI_Vision-vision%20api-KWID_43700018487811160-aud-1644542956068%3Akwd-203288733847&userloc_1009444-network_g&utm_term=KW_vision%20api&gclid=CjwKCAiA9qKbBhAzEiwAS4yeDRARy_eLhEKBFWFCdOLBap5IZqY_tS0PEKdO_XXYyW0gsmNNKd9VFhoCvFAQAvD_BwE&gclsrc=aw.ds
