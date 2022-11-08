@@ -16,10 +16,13 @@ Photolio
 *画像を投稿*
 - 投稿時に撮影地を入力し、その情報をもとにマップにマーカーを立てて記録できる。
 - 自分の投稿の一つをお気に入り登録できる
+- 投稿時に自動でタグを生成
+- 使用した機材を登録できる
 
 *画像を閲覧*
 - 投稿に対しいいね、コメントができる。
 - 同じ撮影地の投稿を見ることができる。
+- タグ、機材をもとに検索ができる
 
 
 ### サイトテーマ
@@ -50,11 +53,14 @@ Photolio
 
 *閲覧*
 - 他のカメラマンの技術を参考にする時に。
-- 同じ被写体を撮影しているユーザーを探すときに。
+- 同じ機材を使用していたり被写体を撮影しているユーザーを探すときに。
 
 
 ## 設計書
-https://docs.google.com/spreadsheets/d/1OWI0RFyNmU5rGA1EXaXAROilWWXLzpqMBsijfqPidms/edit?usp=sharing
+- テーブル定義書
+https://docs.google.com/spreadsheets/d/1OWI0RFyNmU5rGA1EXaXAROilWWXLzpqMBsijfqPidms/edit?usp=sharing.
+- ER図.
+https://drive.google.com/file/d/1qd_pzIlT1oSly3L0N00OkITTstmLC74l/view?usp=sharing.
 
 
 ## 開発環境
