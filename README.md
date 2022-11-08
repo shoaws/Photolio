@@ -53,13 +53,13 @@ Photolio
 
 *閲覧*
 - 他のカメラマンの技術を参考にする時に。
-- 同じ機材を使用していたり被写体を撮影しているユーザーを探すときに。
+- 同じ機材を使用していたり、被写体を撮影しているユーザーを探すときに。
 
 
 ## 設計書
 - テーブル定義書
 https://docs.google.com/spreadsheets/d/1OWI0RFyNmU5rGA1EXaXAROilWWXLzpqMBsijfqPidms/edit?usp=sharing.
-- ER図.
+- ER図
 https://drive.google.com/file/d/1qd_pzIlT1oSly3L0N00OkITTstmLC74l/view?usp=sharing.
 
 
