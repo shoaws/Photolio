@@ -1,6 +1,9 @@
 <div class="container">
-  <div class="row d-flex justify-content-center">
+  <div class="row mb-2 d-flex justify-content-center align-items-center">
     <% if @member_keyword.nil? %>
+      <%= link_to member_path(@member) do %>
+        <%= image_tag @member.get_profile_image, size: "60x60", class: "member-icon mr-3" %>
+      <% end %>
       <h4><%= @members.count %>フォロー中</h4>
     <% else %>
       <h4>メンバー検索「<%= @member_keyword %>」: <%= @members.count %>件</h4>
