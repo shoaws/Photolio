@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container sign_up">
   <h4 class="text-center font-weight-bold">新規メンバー登録</h4>
   <%= form_with model: @member, url: member_registration_path do |f| %>
-    <div class="row mt-5 mx-auto justify-content-center" style="width: 70%;">
+    <div class="row mt-5 mx-auto justify-content-center sign_up_form">
       <%= render "layouts/errors", obj: @member %>
       <table class="table table-borderless table-sm">
         <tr>
@@ -19,7 +19,7 @@
         <tr>
           <td class="align-middle"><%= f.label :email, class: "my-auto" %></td>
           <td></td>
-          <td><%= f.text_field :email, autocomplete: "email", placeholder: "sample@example.com", style: "border-radius: 8px;", class: "form-control" %></td>
+          <td colspan="3"><%= f.text_field :email, autocomplete: "email", placeholder: "sample@example.com", style: "border-radius: 8px;", class: "form-control" %></td>
         </tr>
         <tr>
           <td class="align-middle"><%= f.label :introduction, class: "my-auto" %></td>
@@ -29,17 +29,17 @@
         <tr>
           <td class="align-middle"><%= f.label :phone_number, class: "my-auto" %>(ハイフンなし)</td>
           <td></td>
-          <td><%= f.text_field :phone_number, placeholder: "0000000000", style: "border-radius: 8px;", class: "form-control" %></td>
+          <td colspan="2"><%= f.text_field :phone_number, placeholder: "0000000000", style: "border-radius: 8px;", class: "form-control" %></td>
         </tr>
         <tr>
           <td class="align-middle"><span>パスワード(6文字以上)</span></td>
           <td></td>
-          <td><%= f.password_field :password, autocomplete: "new-password", style: "border-radius: 8px;", class: "form-control" %></td>
+          <td colspan="2"><%= f.password_field :password, autocomplete: "new-password", style: "border-radius: 8px;", class: "form-control" %></td>
         </tr>
         <tr>
           <td class="align-middle"><span>パスワード(確認用)</span></td>
           <td></td>
-          <td><%= f.password_field :password_confirmation, autocomplete: "new-password", style: "border-radius: 8px;", class: "form-control" %></td>
+          <td colspan="2"><%= f.password_field :password_confirmation, autocomplete: "new-password", style: "border-radius: 8px;", class: "form-control" %></td>
         </tr>
       </table>
     </div>

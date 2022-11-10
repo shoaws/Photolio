@@ -37,3 +37,25 @@ body{
 .photo-image:hover{
   opacity: 0.7;
 }
+
+.sign_up_form{
+  width: 70%;
+}
+
+@media screen and (max-width:768px) {
+  .sign_up,
+  .sign_in{
+    font-size: 12px;
+  }
+
+  .sign_up_form{
+    width: 100%;
+  }
+
+  .low_item{
+    font-size: 10px;
+    position: fixed;
+    bottom: 0;
+  }
+
+}
