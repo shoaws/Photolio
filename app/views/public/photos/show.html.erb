@@ -25,16 +25,8 @@
               <i class="fas fa-times"></i> 削除
             <% end %>
           </div>
-          <div class="col-4">
-            <% if @member.best_photo_id == @photo.id %>
-              <%= link_to photo_best_photo_path(@photo), method: :post, class: "text-warning" do %>
-                <span class="lead">★</span>
-              <% end %>
-            <% else %>
-              <%= link_to photo_best_photo_path(@photo), method: :post, class: "text-dark" do %>
-                <span class="lead">☆</span>
-              <% end %>
-            <% end %>
+          <div id="best_photo_btn" class="col-4">
+            <%= render 'public/members/best_photo_btn', member: current_member, photo: @photo %>
           </div>
         </div>
       <% end %>

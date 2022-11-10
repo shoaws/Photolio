@@ -29,11 +29,11 @@ class Public::MembersController < ApplicationController
   end
 
   def best_photo
-    photo = Photo.find(params[:photo_id])
-    if photo.member_id == current_member.id
-      current_member.best_photo_id = photo.id
+    @photo = Photo.find(params[:photo_id])
+    if @photo.member_id == current_member.id
+      current_member.best_photo_id = @photo.id
       current_member.save
-      redirect_to photo_path(photo)
+      render 'btn_change'
     else
       redirect_to member_path(current_member)
     end

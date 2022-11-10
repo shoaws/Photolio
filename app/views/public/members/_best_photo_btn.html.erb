@@ -1,0 +1,9 @@
+<% if member.best_photo_id == photo.id %>
+  <%= link_to best_photo_path(photo_id: photo.id), method: :post, remote: true, class: "text-warning" do %>
+    <span class="lead">★</span>
+  <% end %>
+<% else %>
+  <%= link_to best_photo_path(photo_id: photo.id), method: :post, remote:true, class: "text-dark" do %>
+    <span class="lead">☆</span>
+  <% end %>
+<% end %>

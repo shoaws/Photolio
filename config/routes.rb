@@ -27,6 +27,8 @@ Rails.application.routes.draw do
       get 'unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
       patch 'withdraw' => 'members#withdraw', as: 'withdraw'
     end
+    
+    post 'best_photo' => 'members#best_photo', as: 'best_photo'
 
     # 検索機能
     get 'relationships/followings/search' => 'relationships#search'
@@ -39,7 +41,6 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :photo_comments, only: [:create, :destroy]
       resources :maps, only: [:index]
-      post 'best_photo' => 'members#best_photo', as: 'best_photo'
     end
 
     get 'homes/top'
