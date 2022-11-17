@@ -7,10 +7,10 @@
       <%= f.file_field :image, accept: 'image/*', onchange: "previewImage(this);" %>
     </div>
     <div class="text-center">
-      <% if request.path.include?("new") %>
-        <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width: 100%; height: 45vh; object-fit: contain;"></img>
-      <% elsif request.path.include?("#{photo.id}") || request.path.include?("edit") %>
+      <% if request.path.include?("edit") && request.path.include?("#{photo.id}") %>
         <%= image_tag photo.image, id: "preview", style: "width: 100%; height: 45vh; object-fit: contain;" %>
+      <% else %>
+        <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width: 100%; height: 45vh; object-fit: contain;"></img>
       <% end %>
     </div>
   </div>
