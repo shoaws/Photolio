@@ -1,7 +1,7 @@
 <div class='container'>
   <h2>Edit Photo</h2>
   <div class='row'>
-    <%= render 'form', photo: @photo, tag_list: @tag_list, cameras: @cameras %>
+    <%= render 'form', photo: @photo, tag_list: @tag_list, camera: @camera %>
   </div>
   <div class="mt-3 text-center">
     <%= link_to '< Photo', photo_path(@photo), class: "mr-5 btn btn-secondary" %>

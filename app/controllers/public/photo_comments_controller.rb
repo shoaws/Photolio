@@ -17,8 +17,12 @@ class Public::PhotoCommentsController < ApplicationController
     @photo = Photo.find(params[:photo_id])
     @comments = @photo.photo_comments.all.order(created_at: :desc)
     @comment = PhotoComment.find(params[:id])
-    @comment.destroy
-    render 'comment_area'
+    if @comment.member == current_member
+      @comment.destroy
+      render 'comment_area'
+    else
+      render 'comment_area'
+    end
   end
 
   private

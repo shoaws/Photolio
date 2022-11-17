@@ -43,6 +43,11 @@ class Public::PhotosController < ApplicationController
 
   def edit
     @photo = Photo.find(params[:id])
+    @camera = ""
+    @photo.cameras.each do |camera|
+      @camera = @camera + "," + camera.name
+    end
+    @camera.slice!(0)
   end
 
   def update

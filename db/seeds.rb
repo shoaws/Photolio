@@ -62,24 +62,46 @@ Camera.create!(
   ]
 )
 
-PhotoCamera.create!(
-  [
-    {photo_id: '10', camera_id: '1'},
-    {photo_id: '10', camera_id: '3'},
-    {photo_id: '9', camera_id: '2'},
-    {photo_id: '9', camera_id: '4'},
-    {photo_id: '16', camera_id: '2'},
-    {photo_id: '17', camera_id: '2'},
-    {photo_id: '18', camera_id: '2'},
-    {photo_id: '19', camera_id: '2'},
-    {photo_id: '20', camera_id: '2'},
-    {photo_id: '16', camera_id: '4'},
-    {photo_id: '17', camera_id: '4'},
-    {photo_id: '18', camera_id: '4'},
-    {photo_id: '19', camera_id: '4'},
-    {photo_id: '20', camera_id: '4'},
-  ]
-)
+photocameras = [
+  {photo_id: 1, camera_id: 1},
+    {photo_id: 1, camera_id: 3},
+    {photo_id: 2, camera_id: 1},
+    {photo_id: 2, camera_id: 3},
+    {photo_id: 3, camera_id: 1},
+    {photo_id: 3, camera_id: 3},
+    {photo_id: 4, camera_id: 1},
+    {photo_id: 4, camera_id: 3},
+    {photo_id: 5, camera_id: 1},
+    {photo_id: 5, camera_id: 3},
+    {photo_id: 6, camera_id: 1},
+    {photo_id: 6, camera_id: 3},
+    {photo_id: 7, camera_id: 1},
+    {photo_id: 7, camera_id: 3},
+    {photo_id: 8, camera_id: 1},
+    {photo_id: 8, camera_id: 3},
+    {photo_id: 10, camera_id: 1},
+    {photo_id: 10, camera_id: 3},
+    {photo_id: 9, camera_id: 2},
+    {photo_id: 9, camera_id: 4},
+    {photo_id: 16, camera_id: 2},
+    {photo_id: 16, camera_id: 4},
+    {photo_id: 17, camera_id: 2},
+    {photo_id: 17, camera_id: 4},
+    {photo_id: 18, camera_id: 2},
+    {photo_id: 18, camera_id: 4},
+    {photo_id: 19, camera_id: 2},
+    {photo_id: 19, camera_id: 4},
+    {photo_id: 20, camera_id: 2},
+    {photo_id: 20, camera_id: 4},
+    {photo_id: 21, camera_id: 1},
+    {photo_id: 21, camera_id: 3},
+    {photo_id: 22, camera_id: 1},
+    {photo_id: 22, camera_id: 3},
+]
+
+photocameras.each do |photocamera|
+  PhotoCamera.find_or_create_by(photocamera)
+end
 
 Tag.create!(
   [
@@ -90,15 +112,17 @@ Tag.create!(
   ]
 )
 
-PhotoTag.create!(
-  [
-    {photo_id: '10', tag_id: '1'},
-    {photo_id: '10', tag_id: '2'},
-    {photo_id: '9', tag_id: '3'},
-    {photo_id: '9', tag_id: '4'},
-    {photo_id: '19', tag_id: '1'},
-    {photo_id: '19', tag_id: '2'},
-    {photo_id: '16', tag_id: '4'},
-    {photo_id: '18', tag_id: '2'},
-  ]
-)
+phototags = [
+  {photo_id: 10, tag_id: 1},
+  {photo_id: 10, tag_id: 2},
+  {photo_id: 9, tag_id: 3},
+  {photo_id: 9, tag_id: 4},
+  {photo_id: 19, tag_id: 1},
+  {photo_id: 19, tag_id: 2},
+  {photo_id: 16, tag_id: 4},
+  {photo_id: 18, tag_id: 2},
+]
+
+phototags.each do |phototag|
+PhotoTag.find_or_create_by(phototag)
+end

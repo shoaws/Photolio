@@ -32,9 +32,9 @@ class Photo < ApplicationRecord
   def save_tag(sent_tags)
     # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
-    # 現在存在するタグから送られてきたタグを除いてold_tagに代入
+    # 現在存在するタグから送られてきたタグを除いてold_tagsに代入
     old_tags = current_tags - sent_tags
-    # 送信されてきたタグから現在存在するタグを除いたタグをnew_tagに代入
+    # 送信されてきたタグから現在存在するタグを除いたタグをnew_tagsに代入
     new_tags = sent_tags - current_tags
     # 古いタグを消す
     old_tags.each do |old_tag|

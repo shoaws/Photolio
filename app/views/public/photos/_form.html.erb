@@ -7,10 +7,10 @@
       <%= f.file_field :image, accept: 'image/*', onchange: "previewImage(this);" %>
     </div>
     <div class="text-center">
-      <% if request.path.include?("new") %>
-        <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width: 100%; height: 45vh; object-fit: contain;"></img>
-      <% else %>
+      <% if request.path.include?("edit") %>
         <%= image_tag photo.image, id: "preview", style: "width: 100%; height: 45vh; object-fit: contain;" %>
+      <% else %>
+        <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width: 100%; height: 45vh; object-fit: contain;"></img>
       <% end %>
     </div>
   </div>
@@ -33,7 +33,7 @@
         </span>
       <% end %>
     </label>
-    <%= f.text_field :camera_name, value: cameras, placeholder: "「,」で区切って入力", class: "form-control"%>
+    <%= f.text_field :camera_name, value: camera, placeholder: "「,」で区切って入力", class: "form-control"%>
   </div>
   <div class="form-group">
     <%= f.label :address, class: "lead" %>
