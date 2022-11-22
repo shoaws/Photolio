@@ -58,7 +58,9 @@ class Photo < ApplicationRecord
 
     new_cameras.each do |new_camera|
       new_photo_camera = Camera.find_or_create_by(name: new_camera)
-      self.cameras << new_photo_camera
+      unless self.cameras.include?(new_photo_camera)
+        self.cameras << new_photo_camera
+      end
     end
 
   end
