@@ -43,7 +43,9 @@ class Photo < ApplicationRecord
     # 新しいタグを保存
     new_tags.each do |new_tag|
       new_photo_tag = Tag.find_or_create_by(name: new_tag)
-      self.tags << new_photo_tag
+      unless self.tags.include?(new_photo_tag)
+        self.tags << new_photo_tag
+      end
     end
   end
 
